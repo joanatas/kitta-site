@@ -589,14 +589,18 @@
            RESPONSIVIDADE (MOBILE)
            ========================================================================== */
         @media (max-width: 860px) {
+            .navbar-container {
+                padding: 0 16px;
+            }
+            .navbar-menu,
+            .navbar-btn-privacy {
+                display: none; /* Simplifica menu e oculta botão secundário no mobile */
+            }
             .feature-grid {
                 grid-template-columns: 1fr;
             }
             .hero-title {
                 font-size: 28px;
-            }
-            .navbar-menu {
-                display: none; /* Simplifica menu no mobile */
             }
             .main-wrapper {
                 padding: 24px 16px 60px;
@@ -624,7 +628,7 @@
                 <li><a href="#privacidade" class="navbar-link">Privacidade</a></li>
             </ul>
             <div class="navbar-cta">
-                <a href="#privacidade" class="ant-btn ant-btn-default">Termos & Privacidade</a>
+                <a href="#privacidade" class="ant-btn ant-btn-default navbar-btn-privacy">Termos & Privacidade</a>
                 <a href="https://play.google.com/store/apps/details?id=com.joanatas.kitta" target="_blank" rel="noopener" class="ant-btn ant-btn-primary">Google Play</a>
             </div>
         </div>
