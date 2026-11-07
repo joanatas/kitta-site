@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitta — Controle Financeiro Pessoal & Lembretes</title>
+    <meta name="description" content="Kitta: Controle suas contas a pagar com tranquilidade. Gestão financeira pessoal simples, inteligente e 100% offline.">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    
+    <!-- Tipografia moderna e limpa no padrão Ant Design -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           ANT DESIGN LIGHT DESIGN SYSTEM TOKENS
+           ========================================================================== */
+        :root {
+            /* Cores de Marca / Primárias (AntD Blue) */
+            --ant-primary: #1677ff;
+            --ant-primary-hover: #4096ff;
+            --ant-primary-active: #0958d9;
+            --ant-primary-bg: #e6f4ff;
+            --ant-primary-border: #91caff;
+
+            /* Tipografia & Cores de Texto */
+            --ant-text: #1f1f1f;
+            --ant-text-secondary: #595959;
+            --ant-text-tertiary: #8c8c8c;
+            --ant-text-quaternary: #bfbfbf;
+
+            /* Fundos & Superfícies (Tema Claro) */
+            --ant-bg-layout: #f5f5f7;
+            --ant-bg-container: #ffffff;
+            --ant-bg-spotlight: #fafafa;
+            --ant-bg-subtle: #f8fafc;
+
+            /* Bordas & Divisores */
+            --ant-border: #d9d9d9;
+            --ant-border-secondary: #f0f0f0;
+
+            /* Geometria: Cantos Levemente Arredondados (AntD default) */
+            --ant-radius-xs: 2px;
+            --ant-radius-sm: 4px;
+            --ant-radius: 6px;
+            --ant-radius-lg: 8px;
+
+            /* Sombras Ant Design (Sutis e Elegantes) */
+            --ant-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+            --ant-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+            --ant-shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 2px 8px -2px rgba(0, 0, 0, 0.04);
+            --ant-shadow-hover: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+
+            /* Cores de Alerta & Sucesso */
+            --ant-success: #52c41a;
+            --ant-success-bg: #f6ffed;
+            --ant-success-border: #b7eb8f;
+            --ant-warning: #faad14;
+            --ant-warning-bg: #fffbe6;
+            --ant-warning-border: #ffe58f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--ant-bg-layout);
+            color: var(--ant-text);
+            font-size: 14px;
+            line-height: 1.5714;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ==========================================================================
+           HEADER / NAVBAR (AntD Navigation Bar)
+           ========================================================================== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--ant-border-secondary);
+            height: 64px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-container {
+            max-width: 1080px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--ant-text);
+        }
+
+        .brand-logo-img {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--ant-radius);
+            object-fit: cover;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--ant-border-secondary);
+        }
+
+        .hero-logo-wrapper {
+            margin-bottom: 20px;
+        }
+
+        .hero-logo-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 18px;
+            object-fit: cover;
+            box-shadow: 0 8px 24px -4px rgba(22, 119, 255, 0.2);
+            border: 1px solid var(--ant-border-secondary);
+            background: #ffffff;
+        }
+
+        .brand-title {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .navbar-menu {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .navbar-link {
+            padding: 6px 14px;
+            color: var(--ant-text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: var(--ant-radius);
+            transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .navbar-link:hover {
+            color: var(--ant-primary);
+            background: var(--ant-bg-spotlight);
+        }
+
+        .navbar-cta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* ==========================================================================
+           BUTTONS & TAGS (Ant Design Components)
+           ========================================================================== */
+        .ant-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            height: 36px;
+            padding: 4px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: var(--ant-radius);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        .ant-btn-primary {
+            background-color: var(--ant-primary);
+            border: 1px solid var(--ant-primary);
+            color: #ffffff;
+            box-shadow: 0 2px 0 rgba(5, 145, 255, 0.1);
+        }
+
+        .ant-btn-primary:hover {
+            background-color: var(--ant-primary-hover);
+            border-color: var(--ant-primary-hover);
+            color: #ffffff;
+        }
+
+        .ant-btn-primary:active {
+            background-color: var(--ant-primary-active);
+            border-color: var(--ant-primary-active);
+        }
+
+        .ant-btn-default {
+            background-color: #ffffff;
+            border: 1px solid var(--ant-border);
+            color: var(--ant-text);
+            box-shadow: 0 2px 0 rgba(0, 0, 0, 0.02);
+        }
+
+        .ant-btn-default:hover {
+            border-color: var(--ant-primary);
+            color: var(--ant-primary);
+        }
+
+        .ant-btn-lg {
+            height: 42px;
+            padding: 6px 22px;
+            font-size: 15px;
+            border-radius: var(--ant-radius-lg);
+        }
+
+        .ant-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 20px;
+            border-radius: var(--ant-radius-sm);
+            border: 1px solid var(--ant-border);
+            background: var(--ant-bg-spotlight);
+            color: var(--ant-text-secondary);
+        }
+
+        .ant-tag-blue {
+            background: var(--ant-primary-bg);
+            border-color: var(--ant-primary-border);
+            color: var(--ant-primary-active);
+        }
+
+        .ant-tag-green {
+            background: var(--ant-success-bg);
+            border-color: var(--ant-success-border);
+            color: #389e0d;
+        }
+
+        .ant-tag-pro {
+            background: #fff7e6;
+            border-color: #ffd591;
+            color: #d46b08;
+            font-weight: 600;
+        }
+
+        /* ==========================================================================
+           LAYOUT / WRAPPER
+           ========================================================================== */
+        .main-wrapper {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        /* ==========================================================================
+           HERO SECTION
+           ========================================================================== */
+        .hero {
+            text-align: center;
+            padding: 48px 0 64px;
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        .hero-tags {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hero-title {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.25;
+            color: var(--ant-text);
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            line-height: 1.65;
+            color: var(--ant-text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        /* ==========================================================================
+           ALERT COMPONENT (Ant Design Alert)
+           ========================================================================== */
+        .ant-alert {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px 18px;
+            border-radius: var(--ant-radius-lg);
+            margin-bottom: 28px;
+            font-size: 13.5px;
+            line-height: 1.55;
+        }
+
+        .ant-alert-info {
+            background-color: var(--ant-primary-bg);
+            border: 1px solid var(--ant-primary-border);
+            color: var(--ant-text);
+        }
+
+        .ant-alert-icon {
+            font-size: 18px;
+            line-height: 1;
+            color: var(--ant-primary);
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .ant-alert-content {
+            flex: 1;
+        }
+
+        .ant-alert-title {
+            font-weight: 600;
+            color: var(--ant-text);
+            margin-bottom: 2px;
+        }
+
+        /* ==========================================================================
+           CARD COMPONENT (Ant Design Card)
+           ========================================================================== */
+        .ant-card {
+            background: var(--ant-bg-container);
+            border: 1px solid var(--ant-border-secondary);
+            border-radius: var(--ant-radius-lg);
+            box-shadow: var(--ant-shadow-sm);
+            margin-bottom: 32px;
+            overflow: hidden;
+            transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .ant-card:hover {
+            box-shadow: var(--ant-shadow-card);
+        }
+
+        .ant-card-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 54px;
+            padding: 0 24px;
+            border-bottom: 1px solid var(--ant-border-secondary);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--ant-text);
+        }
+
+        .ant-card-body {
+            padding: 24px;
+        }
+
+        /* ==========================================================================
+           FEATURE GRID
+           ========================================================================== */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 48px;
+        }
+
+        .feature-card {
+            background: var(--ant-bg-container);
+            border: 1px solid var(--ant-border-secondary);
+            border-radius: var(--ant-radius-lg);
+            padding: 22px;
+            box-shadow: var(--ant-shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: all 0.25s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--ant-primary-border);
+            transform: translateY(-2px);
+            box-shadow: var(--ant-shadow-card);
+        }
+
+        .feature-icon-wrapper {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--ant-radius);
+            background: var(--ant-primary-bg);
+            color: var(--ant-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .feature-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--ant-text);
+        }
+
+        .feature-desc {
+            font-size: 13.5px;
+            color: var(--ant-text-secondary);
+            line-height: 1.55;
+        }
+
+        /* ==========================================================================
+           TABLE COMPONENT (Ant Design Table)
+           ========================================================================== */
+        .ant-table-wrapper {
+            border: 1px solid var(--ant-border-secondary);
+            border-radius: var(--ant-radius-lg);
+            overflow: hidden;
+            background: var(--ant-bg-container);
+            margin: 20px 0;
+        }
+
+        table.ant-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 13.5px;
+        }
+
+        table.ant-table th {
+            background: var(--ant-bg-spotlight);
+            color: var(--ant-text);
+            font-weight: 600;
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--ant-border-secondary);
+        }
+
+        table.ant-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--ant-border-secondary);
+            color: var(--ant-text-secondary);
+        }
+
+        table.ant-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        table.ant-table tbody tr:hover td {
+            background: #fafafa;
+        }
+
+        .text-strong {
+            color: var(--ant-text);
+            font-weight: 600;
+        }
+
+        /* ==========================================================================
+           TYPOGRAPHY SECTIONS
+           ========================================================================== */
+        .section-header {
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--ant-text);
+            letter-spacing: -0.01em;
+            margin-bottom: 6px;
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+            color: var(--ant-text-tertiary);
+        }
+
+        .doc-h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--ant-text);
+            margin: 24px 0 8px;
+        }
+
+        .doc-p {
+            font-size: 14px;
+            color: var(--ant-text-secondary);
+            line-height: 1.65;
+            margin-bottom: 14px;
+        }
+
+        .doc-ul {
+            margin: 0 0 16px 20px;
+            color: var(--ant-text-secondary);
+        }
+
+        .doc-ul li {
+            margin-bottom: 6px;
+            line-height: 1.6;
+        }
+
+        code {
+            font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 12.5px;
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: var(--ant-radius-xs);
+            border: 1px solid #e8e8e8;
+            color: #d4380d;
+        }
+
+        a.text-link {
+            color: var(--ant-primary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a.text-link:hover {
+            color: var(--ant-primary-hover);
+            text-decoration: underline;
+        }
+
+        /* ==========================================================================
+           FOOTER (Ant Design Minimalist Footer)
+           ========================================================================== */
+        footer.ant-footer {
+            border-top: 1px solid var(--ant-border-secondary);
+            background: #ffffff;
+            padding: 40px 24px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--ant-text-tertiary);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--ant-text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--ant-primary);
+        }
+
+        /* ==========================================================================
+           RESPONSIVIDADE (MOBILE)
+           ========================================================================== */
+        @media (max-width: 860px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-title {
+                font-size: 28px;
+            }
+            .navbar-menu {
+                display: none; /* Simplifica menu no mobile */
+            }
+            .main-wrapper {
+                padding: 24px 16px 60px;
+            }
+            .ant-card-head, .ant-card-body {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR TOPO -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-brand">
+                <img src="logo.png" alt="Kitta Logo" class="brand-logo-img">
+                <span class="brand-title">Kitta</span>
+                <span class="ant-tag ant-tag-blue">v1.0</span>
+            </a>
+            <ul class="navbar-menu">
+                <li><a href="#sobre" class="navbar-link">Sobre</a></li>
+                <li><a href="#recursos" class="navbar-link">Recursos</a></li>
+                <li><a href="#comparativo" class="navbar-link">Kitta Pro</a></li>
+                <li><a href="#privacidade" class="navbar-link">Privacidade</a></li>
+            </ul>
+            <div class="navbar-cta">
+                <a href="#privacidade" class="ant-btn ant-btn-default">Termos & Privacidade</a>
+                <a href="https://play.google.com/store/apps/details?id=com.joanatas.kitta" target="_blank" rel="noopener" class="ant-btn ant-btn-primary">Google Play</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-logo-wrapper">
+                <img src="logo.png" alt="Kitta Logo" class="hero-logo-img">
+            </div>
+            <div class="hero-tags">
+                <span class="ant-tag ant-tag-blue">● 100% Offline</span>
+                <span class="ant-tag ant-tag-green">✓ Privacidade Garantida</span>
+                <span class="ant-tag ant-tag-pro">👑 Kitta Pro</span>
+            </div>
+            <h1 class="hero-title">O controle financeiro que você realmente vai usar no dia a dia.</h1>
+            <p class="hero-subtitle">
+                Sem gráficos bancários densos, sem planilhas complexas e sem compartilhar seus dados com terceiros.
+                O Kitta é o assistente ideal focado no essencial: <strong>nunca mais esquecer de pagar uma conta</strong>.
+            </p>
+            <div class="hero-actions">
+                <a href="#recursos" class="ant-btn ant-btn-primary ant-btn-lg">Conhecer Funcionalidades</a>
+                <a href="#privacidade" class="ant-btn ant-btn-default ant-btn-lg">Ler Política de Privacidade</a>
+            </div>
+        </section>
+
+        <!-- ALERTA DE PRIVACIDADE ANT DESIGN -->
+        <div class="ant-alert ant-alert-info">
+            <div class="ant-alert-icon">ℹ</div>
+            <div class="ant-alert-content">
+                <div class="ant-alert-title">Privacidade por Princípio (Privacy by Design)</div>
+                <div>Todas as suas contas, valores e registros ficam armazenados exclusivamente no banco de dados local (SQLite) do seu celular. Não possuímos servidores coletando suas informações financeiras.</div>
+            </div>
+        </div>
+
+        <!-- SEÇÃO SOBRE O KITTA -->
+        <section id="sobre">
+            <div class="ant-card">
+                <div class="ant-card-head">
+                    <span>Sobre o Kitta</span>
+                    <span class="ant-tag ant-tag-blue">Propósito & Filosofia</span>
+                </div>
+                <div class="ant-card-body">
+                    <p class="doc-p">
+                        O <strong>Kitta</strong> nasceu para resolver uma dor real: a frustração com aplicativos financeiros pesados, cheios de gráficos confusos, sincronizações bancárias que falham ou planilhas difíceis de manter no celular.
+                    </p>
+                    <p class="doc-p">
+                        Nosso compromisso é com a <strong>simplicidade radical</strong> e a <strong>tranquilidade</strong>. O Kitta foca no que realmente importa: organizar seus vencimentos, avisar antes que o prazo expire e evitar que você jogue dinheiro fora pagando multas ou juros por atraso.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 18px;">
+                        <div style="background: var(--ant-bg-spotlight); padding: 14px 16px; border-radius: var(--ant-radius); border: 1px solid var(--ant-border-secondary);">
+                            <div style="font-weight: 600; color: var(--ant-text); margin-bottom: 4px;">🎯 Simplicidade Radical</div>
+                            <div style="font-size: 13px; color: var(--ant-text-secondary);">Cadastre uma conta em segundos com poucos toques, sem burocracia ou telas poluídas.</div>
+                        </div>
+                        <div style="background: var(--ant-bg-spotlight); padding: 14px 16px; border-radius: var(--ant-radius); border: 1px solid var(--ant-border-secondary);">
+                            <div style="font-weight: 600; color: var(--ant-text); margin-bottom: 4px;">🛡️ 100% Offline & Seguro</div>
+                            <div style="font-size: 13px; color: var(--ant-text-secondary);">Seus dados financeiros não saem do seu celular para nenhum servidor em nuvem.</div>
+                        </div>
+                        <div style="background: var(--ant-bg-spotlight); padding: 14px 16px; border-radius: var(--ant-radius); border: 1px solid var(--ant-border-secondary);">
+                            <div style="font-weight: 600; color: var(--ant-text); margin-bottom: 4px;">🔔 Lembretes Confiáveis</div>
+                            <div style="font-size: 13px; color: var(--ant-text-secondary);">Alertas locais pontuais no dia ou com antecedência no horário que você preferir.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GRID DE RECURSOS -->
+        <section id="recursos">
+            <div class="section-header">
+                <h2 class="section-title">Construído para simplificar suas finanças</h2>
+                <p class="section-subtitle">Funcionalidades práticas desenhadas com foco absoluto na experiência do usuário.</p>
+            </div>
+
+            <div class="feature-grid">
+                <!-- Card 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">📅</div>
+                    <div class="feature-title">Contas & Vencimentos</div>
+                    <div class="feature-desc">Cadastre despesas fixas, variáveis ou parceladas com facilidade. Acompanhe o que está pendente, pago ou em atraso.</div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">🔔</div>
+                    <div class="feature-title">Lembretes Inteligentes</div>
+                    <div class="feature-desc">Notificações locais pontuais no dia do vencimento ou com antecedência no horário que você escolher, evitando multas e juros.</div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">👑</div>
+                    <div class="feature-title">Saldo Inteligente (Pro)</div>
+                    <div class="feature-desc">Módulo de recebimentos com cálculo automático da sobra real do mês anterior aplicada ao mês atual e cobertura de despesas.</div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">📊</div>
+                    <div class="feature-title">Relatórios Objetivos</div>
+                    <div class="feature-desc">Distribuição clara de gastos por categoria para você entender visualmente para onde está indo o seu dinheiro.</div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">🔒</div>
+                    <div class="feature-title">Backups Criptografados</div>
+                    <div class="feature-desc">Exporte seus dados protegidos com criptografia AES-256 e restaure quando trocar de aparelho celular sem complicações.</div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">⚡</div>
+                    <div class="feature-title">Ultra Rápido & Fluido</div>
+                    <div class="feature-desc">Desenvolvido em React Native nativo com SQLite via JSI de altíssima performance. Sem telas de carregamento lentas.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TABELA COMPARATIVA FREEMIUM VS PRO -->
+        <section id="comparativo">
+            <div class="section-header">
+                <h2 class="section-title">Escolha a experiência ideal para você</h2>
+                <p class="section-subtitle">Transparência total entre os recursos gratuitos e a versão Kitta Pro.</p>
+            </div>
+
+            <div class="ant-table-wrapper">
+                <table class="ant-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 50%;">Funcionalidade</th>
+                            <th style="width: 25%;">Kitta Gratuito</th>
+                            <th style="width: 25%;"><span class="ant-tag ant-tag-pro">👑 Kitta Pro</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-strong">Gestão de Contas a Pagar</td>
+                            <td><span class="ant-tag ant-tag-green">✓ Ilimitado</span></td>
+                            <td><span class="ant-tag ant-tag-green">✓ Ilimitado</span></td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong">Lembretes & Notificações de Vencimento</td>
+                            <td><span class="ant-tag ant-tag-green">✓ Sim</span></td>
+                            <td><span class="ant-tag ant-tag-green">✓ Sim</span></td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong">Histórico Mensal & Relatórios Básicos</td>
+                            <td><span class="ant-tag ant-tag-green">✓ Sim</span></td>
+                            <td><span class="ant-tag ant-tag-green">✓ Sim</span></td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong">Backups Criptografados (AES-256)</td>
+                            <td><span class="ant-tag ant-tag-green">✓ Sim</span></td>
+                            <td><span class="ant-tag ant-tag-green">✓ Sim</span></td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong">Módulo de Recebimentos (Entradas / Salário)</td>
+                            <td><span style="color: var(--ant-text-quaternary);">—</span></td>
+                            <td><span class="ant-tag ant-tag-pro">✓ Completo</span></td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong">Saldo Inteligente (Sobra anterior & Aporte)</td>
+                            <td><span style="color: var(--ant-text-quaternary);">—</span></td>
+                            <td><span class="ant-tag ant-tag-pro">✓ Automático</span></td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong">Experiência sem Anúncios</td>
+                            <td>Contém banners AdMob</td>
+                            <td><span class="ant-tag ant-tag-green">100% Livre de Anúncios</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SEÇÃO POLÍTICA DE PRIVACIDADE -->
+        <section id="privacidade">
+            <div class="ant-card">
+                <div class="ant-card-head">
+                    <span>Política de Privacidade</span>
+                    <span class="ant-tag ant-tag-blue">Atualizado em 07/11/2026</span>
+                </div>
+                <div class="ant-card-body">
+                    <p class="doc-p">
+                        Esta Política de Privacidade descreve como o aplicativo <strong>Kitta</strong> ("nós", "nosso" ou "aplicativo"), mantido pelo desenvolvedor independente <strong>Joanatas Martins</strong>, protege e trata os dados dos usuários em total conformidade com a LGPD (Lei Geral de Proteção de Dados) e com as diretrizes do Google Play.
+                    </p>
+
+                    <h3 class="doc-h3">1. Armazenamento Local e Soberania dos Dados</h3>
+                    <p class="doc-p">
+                        O Kitta adota a arquitetura de <strong>Armazenamento 100% Local</strong>. Todos os registros que você adiciona — incluindo nomes de contas, credores, valores monetários, datas de vencimento, notas, categorias e recebimentos — são gravados exclusivamente no banco de dados SQLite local no armazenamento seguro do seu celular.
+                    </p>
+                    <p class="doc-p">
+                        Não mantemos servidores proprietários de sincronização em nuvem e não temos acesso, posse ou visibilidade de nenhuma de suas informações financeiras.
+                    </p>
+
+                    <h3 class="doc-h3">2. Serviços Conectados & Provedores de Tecnologia</h3>
+                    <p class="doc-p">
+                        Para viabilizar a distribuição e a monetização do aplicativo, integramos bibliotecas de parceiros confiáveis:
+                    </p>
+                    <ul class="doc-ul">
+                        <li>
+                            <strong>Google AdMob (Versão Gratuita):</strong> Exibe pequenos anúncios institucionais na versão gratuita. O SDK do Google AdMob pode coletar identificadores anônimos de dispositivo (Google Advertising ID) e telemetria básica para prevenção de fraudes e exibição adequada de publicidade. Consulte a <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener" class="text-link">Política de Publicidade do Google</a>.
+                        </li>
+                        <li>
+                            <strong>Google Play Billing & RevenueCat (Kitta Pro):</strong> O processamento e cobrança de assinaturas são efetuados exclusivamente pelo Google Play. O RevenueCat apenas valida a autenticidade do comprovante da loja. Nós nunca temos acesso aos dados do seu cartão de crédito ou conta bancária.
+                        </li>
+                    </ul>
+                    <p class="doc-p">
+                        <em>Ao assinar o <strong>Kitta Pro</strong>, todas as chamadas de exibição de anúncios são imediatamente desligadas.</em>
+                    </p>
+
+                    <h3 class="doc-h3">3. Permissões Solicitadas no Android</h3>
+                    <div class="ant-table-wrapper" style="margin: 14px 0 20px;">
+                        <table class="ant-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 35%;">Permissão</th>
+                                    <th>Finalidade no Aplicativo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>POST_NOTIFICATIONS</code></td>
+                                    <td>Exibir notificações locais na barra de avisos do celular para alertar sobre contas a vencer ou vencidas.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>RECEIVE_BOOT_COMPLETED</code></td>
+                                    <td>Reativar o agendamento dos lembretes locais caso você reinicie ou desligue o aparelho.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>INTERNET</code></td>
+                                    <td>Necessária para carregar os banners do AdMob (no modo gratuito) e validar o recibo de compra do Kitta Pro junto à Google Play.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 class="doc-h3">4. Exclusão Permanente de Informações</h3>
+                    <p class="doc-p">
+                        Como seus dados não residem em servidores em nuvem, você detém o controle total:
+                    </p>
+                    <ul class="doc-ul">
+                        <li>Você pode apagar qualquer conta ou recebimento a qualquer momento dentro do app.</li>
+                        <li>Para apagar todos os dados definitivamente, basta desinstalar o Kitta do aparelho ou selecionar a opção "Limpar Armazenamento" nas configurações do Android.</li>
+                    </ul>
+
+                    <h3 class="doc-h3">5. Contato com o Desenvolvedor</h3>
+                    <p class="doc-p">
+                        Para suporte, dúvidas relativas a esta política ou sugestões de melhorias, entre em contato diretamente pelo e-mail:
+                    </p>
+                    <div class="ant-alert ant-alert-info" style="margin-top: 10px; margin-bottom: 0;">
+                        <div class="ant-alert-icon">✉</div>
+                        <div class="ant-alert-content">
+                            <strong>Desenvolvedor:</strong> Joanatas Rodrigues Martins<br>
+                            <strong>E-mail:</strong> <a href="mailto:joanatas.dev@gmail.com" class="text-link">joanatas.dev@gmail.com</a><br>
+                            <strong>Localidade:</strong> Brasil
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FOOTER ANT DESIGN -->
+    <footer class="ant-footer">
+        <div class="footer-links">
+            <a href="#sobre">Sobre o Kitta</a>
+            <a href="#recursos">Recursos</a>
+            <a href="#comparativo">Kitta Pro</a>
+            <a href="#privacidade">Política de Privacidade</a>
+            <a href="/app-ads.txt" target="_blank">app-ads.txt</a>
+            <a href="mailto:joanatas.dev@gmail.com">Contato</a>
+        </div>
+        <p>&copy; 2026 Kitta — Desenvolvido por Joanatas Martins. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
