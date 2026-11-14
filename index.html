@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kitta — Controle Financeiro Pessoal & Lembretes</title>
-    <meta name="description" content="Kitta: Controle suas contas a pagar com tranquilidade. Gestão financeira pessoal simples, inteligente e 100% offline.">
-    
+    <meta name="description"
+        content="Kitta: Controle suas contas a pagar com tranquilidade. Gestão financeira pessoal simples, inteligente e 100% offline.">
+
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    
+
     <!-- Tipografia moderna e limpa no padrão Ant Design -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
         /* ==========================================================================
            ANT DESIGN LIGHT DESIGN SYSTEM TOKENS
@@ -592,25 +595,33 @@
             .navbar-container {
                 padding: 0 16px;
             }
+
             .navbar-menu,
             .navbar-btn-privacy {
-                display: none; /* Simplifica menu e oculta botão secundário no mobile */
+                display: none;
+                /* Simplifica menu e oculta botão secundário no mobile */
             }
+
             .feature-grid {
                 grid-template-columns: 1fr;
             }
+
             .hero-title {
                 font-size: 28px;
             }
+
             .main-wrapper {
                 padding: 24px 16px 60px;
             }
-            .ant-card-head, .ant-card-body {
+
+            .ant-card-head,
+            .ant-card-body {
                 padding: 16px;
             }
         }
     </style>
 </head>
+
 <body>
 
     <!-- NAVBAR TOPO -->
@@ -629,7 +640,8 @@
             </ul>
             <div class="navbar-cta">
                 <a href="#privacidade" class="ant-btn ant-btn-default navbar-btn-privacy">Termos & Privacidade</a>
-                <a href="https://play.google.com/store/apps/details?id=com.joanatas.kitta" target="_blank" rel="noopener" class="ant-btn ant-btn-primary">Google Play</a>
+                <a href="https://play.google.com/store/apps/details?id=com.joanatas.kitta" target="_blank"
+                    rel="noopener" class="ant-btn ant-btn-primary">Google Play</a>
             </div>
         </div>
     </header>
@@ -649,7 +661,8 @@
             <h1 class="hero-title">O controle financeiro que você realmente vai usar no dia a dia.</h1>
             <p class="hero-subtitle">
                 Sem gráficos bancários densos, sem planilhas complexas e sem compartilhar seus dados com terceiros.
-                O Kitta é o assistente ideal focado no essencial: <strong>nunca mais esquecer de pagar uma conta</strong>.
+                O Kitta é o assistente ideal focado no essencial: <strong>nunca mais esquecer de pagar uma
+                    conta</strong>.
             </p>
             <div class="hero-actions">
                 <a href="#recursos" class="ant-btn ant-btn-primary ant-btn-lg">Conhecer Funcionalidades</a>
@@ -662,7 +675,8 @@
             <div class="ant-alert-icon">ℹ</div>
             <div class="ant-alert-content">
                 <div class="ant-alert-title">Privacidade por Princípio (Privacy by Design)</div>
-                <div>Todas as suas contas, valores e registros ficam armazenados exclusivamente no banco de dados local (SQLite) do seu celular. Não possuímos servidores coletando suas informações financeiras.</div>
+                <div>Todas as suas contas, valores e registros ficam armazenados exclusivamente no banco de dados local
+                    (SQLite) do seu celular. Não possuímos servidores coletando suas informações financeiras.</div>
             </div>
         </div>
 
@@ -675,23 +689,38 @@
                 </div>
                 <div class="ant-card-body">
                     <p class="doc-p">
-                        O <strong>Kitta</strong> nasceu para resolver uma dor real: a frustração com aplicativos financeiros pesados, cheios de gráficos confusos, sincronizações bancárias que falham ou planilhas difíceis de manter no celular.
+                        O <strong>Kitta</strong> nasceu para resolver uma dor real: a frustração com aplicativos
+                        financeiros pesados, cheios de gráficos confusos, sincronizações bancárias que falham ou
+                        planilhas difíceis de manter no celular.
                     </p>
                     <p class="doc-p">
-                        Nosso compromisso é com a <strong>simplicidade radical</strong> e a <strong>tranquilidade</strong>. O Kitta foca no que realmente importa: organizar seus vencimentos, avisar antes que o prazo expire e evitar que você jogue dinheiro fora pagando multas ou juros por atraso.
+                        Nosso compromisso é com a <strong>simplicidade radical</strong> e a
+                        <strong>tranquilidade</strong>. O Kitta foca no que realmente importa: organizar seus
+                        vencimentos, avisar antes que o prazo expire e evitar que você jogue dinheiro fora pagando
+                        multas ou juros por atraso.
                     </p>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 18px;">
-                        <div style="background: var(--ant-bg-spotlight); padding: 14px 16px; border-radius: var(--ant-radius); border: 1px solid var(--ant-border-secondary);">
-                            <div style="font-weight: 600; color: var(--ant-text); margin-bottom: 4px;">🎯 Simplicidade Radical</div>
-                            <div style="font-size: 13px; color: var(--ant-text-secondary);">Cadastre uma conta em segundos com poucos toques, sem burocracia ou telas poluídas.</div>
+                    <div
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 18px;">
+                        <div
+                            style="background: var(--ant-bg-spotlight); padding: 14px 16px; border-radius: var(--ant-radius); border: 1px solid var(--ant-border-secondary);">
+                            <div style="font-weight: 600; color: var(--ant-text); margin-bottom: 4px;">🎯 Simplicidade
+                                Radical</div>
+                            <div style="font-size: 13px; color: var(--ant-text-secondary);">Cadastre uma conta em
+                                segundos com poucos toques, sem burocracia ou telas poluídas.</div>
                         </div>
-                        <div style="background: var(--ant-bg-spotlight); padding: 14px 16px; border-radius: var(--ant-radius); border: 1px solid var(--ant-border-secondary);">
-                            <div style="font-weight: 600; color: var(--ant-text); margin-bottom: 4px;">🛡️ 100% Offline & Seguro</div>
-                            <div style="font-size: 13px; color: var(--ant-text-secondary);">Seus dados financeiros não saem do seu celular para nenhum servidor em nuvem.</div>
+                        <div
+                            style="background: var(--ant-bg-spotlight); padding: 14px 16px; border-radius: var(--ant-radius); border: 1px solid var(--ant-border-secondary);">
+                            <div style="font-weight: 600; color: var(--ant-text); margin-bottom: 4px;">🛡️ 100% Offline
+                                & Seguro</div>
+                            <div style="font-size: 13px; color: var(--ant-text-secondary);">Seus dados financeiros não
+                                saem do seu celular para nenhum servidor em nuvem.</div>
                         </div>
-                        <div style="background: var(--ant-bg-spotlight); padding: 14px 16px; border-radius: var(--ant-radius); border: 1px solid var(--ant-border-secondary);">
-                            <div style="font-weight: 600; color: var(--ant-text); margin-bottom: 4px;">🔔 Lembretes Confiáveis</div>
-                            <div style="font-size: 13px; color: var(--ant-text-secondary);">Alertas locais pontuais no dia ou com antecedência no horário que você preferir.</div>
+                        <div
+                            style="background: var(--ant-bg-spotlight); padding: 14px 16px; border-radius: var(--ant-radius); border: 1px solid var(--ant-border-secondary);">
+                            <div style="font-weight: 600; color: var(--ant-text); margin-bottom: 4px;">🔔 Lembretes
+                                Confiáveis</div>
+                            <div style="font-size: 13px; color: var(--ant-text-secondary);">Alertas locais pontuais no
+                                dia ou com antecedência no horário que você preferir.</div>
                         </div>
                     </div>
                 </div>
@@ -702,7 +731,8 @@
         <section id="recursos">
             <div class="section-header">
                 <h2 class="section-title">Construído para simplificar suas finanças</h2>
-                <p class="section-subtitle">Funcionalidades práticas desenhadas com foco absoluto na experiência do usuário.</p>
+                <p class="section-subtitle">Funcionalidades práticas desenhadas com foco absoluto na experiência do
+                    usuário.</p>
             </div>
 
             <div class="feature-grid">
@@ -710,42 +740,48 @@
                 <div class="feature-card">
                     <div class="feature-icon-wrapper">📅</div>
                     <div class="feature-title">Contas & Vencimentos</div>
-                    <div class="feature-desc">Cadastre despesas fixas, variáveis ou parceladas com facilidade. Acompanhe o que está pendente, pago ou em atraso.</div>
+                    <div class="feature-desc">Cadastre despesas fixas, variáveis ou parceladas com facilidade. Acompanhe
+                        o que está pendente, pago ou em atraso.</div>
                 </div>
 
                 <!-- Card 2 -->
                 <div class="feature-card">
                     <div class="feature-icon-wrapper">🔔</div>
                     <div class="feature-title">Lembretes Inteligentes</div>
-                    <div class="feature-desc">Notificações locais pontuais no dia do vencimento ou com antecedência no horário que você escolher, evitando multas e juros.</div>
+                    <div class="feature-desc">Notificações locais pontuais no dia do vencimento ou com antecedência no
+                        horário que você escolher, evitando multas e juros.</div>
                 </div>
 
                 <!-- Card 3 -->
                 <div class="feature-card">
                     <div class="feature-icon-wrapper">👑</div>
                     <div class="feature-title">Saldo Inteligente (Pro)</div>
-                    <div class="feature-desc">Módulo de recebimentos com cálculo automático da sobra real do mês anterior aplicada ao mês atual e cobertura de despesas.</div>
+                    <div class="feature-desc">Módulo de recebimentos com cálculo automático da sobra real do mês
+                        anterior aplicada ao mês atual e cobertura de despesas.</div>
                 </div>
 
                 <!-- Card 4 -->
                 <div class="feature-card">
                     <div class="feature-icon-wrapper">📊</div>
                     <div class="feature-title">Relatórios Objetivos</div>
-                    <div class="feature-desc">Distribuição clara de gastos por categoria para você entender visualmente para onde está indo o seu dinheiro.</div>
+                    <div class="feature-desc">Distribuição clara de gastos por categoria para você entender visualmente
+                        para onde está indo o seu dinheiro.</div>
                 </div>
 
                 <!-- Card 5 -->
                 <div class="feature-card">
                     <div class="feature-icon-wrapper">🔒</div>
                     <div class="feature-title">Backups Criptografados</div>
-                    <div class="feature-desc">Exporte seus dados protegidos com criptografia AES-256 e restaure quando trocar de aparelho celular sem complicações.</div>
+                    <div class="feature-desc">Exporte seus dados protegidos com criptografia AES-256 e restaure quando
+                        trocar de aparelho celular sem complicações.</div>
                 </div>
 
                 <!-- Card 6 -->
                 <div class="feature-card">
                     <div class="feature-icon-wrapper">⚡</div>
                     <div class="feature-title">Ultra Rápido & Fluido</div>
-                    <div class="feature-desc">Desenvolvido em React Native nativo com SQLite via JSI de altíssima performance. Sem telas de carregamento lentas.</div>
+                    <div class="feature-desc">Desenvolvido em React Native nativo com SQLite via JSI de altíssima
+                        performance. Sem telas de carregamento lentas.</div>
                 </div>
             </div>
         </section>
@@ -816,31 +852,47 @@
                 </div>
                 <div class="ant-card-body">
                     <p class="doc-p">
-                        Esta Política de Privacidade descreve como o aplicativo <strong>Kitta</strong> ("nós", "nosso" ou "aplicativo"), mantido pelo desenvolvedor independente <strong>Joanatas Martins</strong>, protege e trata os dados dos usuários em total conformidade com a LGPD (Lei Geral de Proteção de Dados) e com as diretrizes do Google Play.
+                        Esta Política de Privacidade descreve como o aplicativo <strong>Kitta</strong> ("nós", "nosso"
+                        ou "aplicativo"), mantido pelo desenvolvedor independente <strong>Joanatas Martins</strong>,
+                        protege e trata os dados dos usuários em total conformidade com a LGPD (Lei Geral de Proteção de
+                        Dados) e com as diretrizes do Google Play.
                     </p>
 
                     <h3 class="doc-h3">1. Armazenamento Local e Soberania dos Dados</h3>
                     <p class="doc-p">
-                        O Kitta adota a arquitetura de <strong>Armazenamento 100% Local</strong>. Todos os registros que você adiciona — incluindo nomes de contas, credores, valores monetários, datas de vencimento, notas, categorias e recebimentos — são gravados exclusivamente no banco de dados SQLite local no armazenamento seguro do seu celular.
+                        O Kitta adota a arquitetura de <strong>Armazenamento 100% Local</strong>. Todos os registros que
+                        você adiciona — incluindo nomes de contas, credores, valores monetários, datas de vencimento,
+                        notas, categorias e recebimentos — são gravados exclusivamente no banco de dados SQLite local no
+                        armazenamento seguro do seu celular.
                     </p>
                     <p class="doc-p">
-                        Não mantemos servidores proprietários de sincronização em nuvem e não temos acesso, posse ou visibilidade de nenhuma de suas informações financeiras.
+                        Não mantemos servidores proprietários de sincronização em nuvem e não temos acesso, posse ou
+                        visibilidade de nenhuma de suas informações financeiras.
                     </p>
 
                     <h3 class="doc-h3">2. Serviços Conectados & Provedores de Tecnologia</h3>
                     <p class="doc-p">
-                        Para viabilizar a distribuição e a monetização do aplicativo, integramos bibliotecas de parceiros confiáveis:
+                        Para viabilizar a distribuição e a monetização do aplicativo, integramos bibliotecas de
+                        parceiros confiáveis:
                     </p>
                     <ul class="doc-ul">
                         <li>
-                            <strong>Google AdMob (Versão Gratuita):</strong> Exibe pequenos anúncios institucionais na versão gratuita. O SDK do Google AdMob pode coletar identificadores anônimos de dispositivo (Google Advertising ID) e telemetria básica para prevenção de fraudes e exibição adequada de publicidade. Consulte a <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener" class="text-link">Política de Publicidade do Google</a>.
+                            <strong>Google AdMob (Versão Gratuita):</strong> Exibe pequenos anúncios institucionais na
+                            versão gratuita. O SDK do Google AdMob pode coletar identificadores anônimos de dispositivo
+                            (Google Advertising ID) e telemetria básica para prevenção de fraudes e exibição adequada de
+                            publicidade. Consulte a <a href="https://policies.google.com/technologies/ads"
+                                target="_blank" rel="noopener" class="text-link">Política de Publicidade do Google</a>.
                         </li>
                         <li>
-                            <strong>Google Play Billing & RevenueCat (Kitta Pro):</strong> O processamento e cobrança de assinaturas são efetuados exclusivamente pelo Google Play. O RevenueCat apenas valida a autenticidade do comprovante da loja. Nós nunca temos acesso aos dados do seu cartão de crédito ou conta bancária.
+                            <strong>Google Play Billing & RevenueCat (Kitta Pro):</strong> O processamento e cobrança de
+                            assinaturas são efetuados exclusivamente pelo Google Play. O RevenueCat apenas valida a
+                            autenticidade do comprovante da loja. Nós nunca temos acesso aos dados do seu cartão de
+                            crédito ou conta bancária.
                         </li>
                     </ul>
                     <p class="doc-p">
-                        <em>Ao assinar o <strong>Kitta Pro</strong>, todas as chamadas de exibição de anúncios são imediatamente desligadas.</em>
+                        <em>Ao assinar o <strong>Kitta Pro</strong>, todas as chamadas de exibição de anúncios são
+                            imediatamente desligadas.</em>
                     </p>
 
                     <h3 class="doc-h3">3. Permissões Solicitadas no Android</h3>
@@ -855,15 +907,23 @@
                             <tbody>
                                 <tr>
                                     <td><code>POST_NOTIFICATIONS</code></td>
-                                    <td>Exibir notificações locais na barra de avisos do celular para alertar sobre contas a vencer ou vencidas.</td>
+                                    <td>Exibir notificações locais na barra de avisos do celular para alertar sobre
+                                        contas a vencer ou vencidas.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>SCHEDULE_EXACT_ALARM</code></td>
+                                    <td>Agendar os lembretes de vencimento no horário exato configurado pelo usuário,
+                                        garantindo a pontualidade do alerta mesmo em modo de economia de energia.</td>
                                 </tr>
                                 <tr>
                                     <td><code>RECEIVE_BOOT_COMPLETED</code></td>
-                                    <td>Reativar o agendamento dos lembretes locais caso você reinicie ou desligue o aparelho.</td>
+                                    <td>Reativar o agendamento dos lembretes locais caso você reinicie ou desligue o
+                                        aparelho.</td>
                                 </tr>
                                 <tr>
                                     <td><code>INTERNET</code></td>
-                                    <td>Necessária para carregar os banners do AdMob (no modo gratuito) e validar o recibo de compra do Kitta Pro junto à Google Play.</td>
+                                    <td>Necessária para carregar os banners do AdMob (no modo gratuito) e validar o
+                                        recibo de compra do Kitta Pro junto à Google Play.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -875,18 +935,21 @@
                     </p>
                     <ul class="doc-ul">
                         <li>Você pode apagar qualquer conta ou recebimento a qualquer momento dentro do app.</li>
-                        <li>Para apagar todos os dados definitivamente, basta desinstalar o Kitta do aparelho ou selecionar a opção "Limpar Armazenamento" nas configurações do Android.</li>
+                        <li>Para apagar todos os dados definitivamente, basta desinstalar o Kitta do aparelho ou
+                            selecionar a opção "Limpar Armazenamento" nas configurações do Android.</li>
                     </ul>
 
                     <h3 class="doc-h3">5. Contato com o Desenvolvedor</h3>
                     <p class="doc-p">
-                        Para suporte, dúvidas relativas a esta política ou sugestões de melhorias, entre em contato diretamente pelo e-mail:
+                        Para suporte, dúvidas relativas a esta política ou sugestões de melhorias, entre em contato
+                        diretamente pelo e-mail:
                     </p>
                     <div class="ant-alert ant-alert-info" style="margin-top: 10px; margin-bottom: 0;">
                         <div class="ant-alert-icon">✉</div>
                         <div class="ant-alert-content">
                             <strong>Desenvolvedor:</strong> Joanatas Rodrigues Martins<br>
-                            <strong>E-mail:</strong> <a href="mailto:joanatas.dev@gmail.com" class="text-link">joanatas.dev@gmail.com</a><br>
+                            <strong>E-mail:</strong> <a href="mailto:joanatas.dev@gmail.com"
+                                class="text-link">joanatas.dev@gmail.com</a><br>
                             <strong>Localidade:</strong> Brasil
                         </div>
                     </div>
@@ -910,4 +973,5 @@
     </footer>
 
 </body>
+
 </html>
