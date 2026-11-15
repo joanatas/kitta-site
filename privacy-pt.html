@@ -196,6 +196,8 @@
             border-radius: var(--ant-radius);
             padding: 0 8px;
             height: 36px;
+            gap: 4px;
+            cursor: pointer;
             transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
 
@@ -207,21 +209,36 @@
 
         .lang-icon {
             font-size: 14px;
-            margin-right: 6px;
             user-select: none;
             line-height: 1;
         }
 
-        .ant-select-lang {
-            border: none;
-            background: transparent;
-            font-family: inherit;
+        .lang-current-text {
             font-size: 13px;
             font-weight: 500;
             color: var(--ant-text);
-            outline: none;
+            white-space: nowrap;
+            user-select: none;
+        }
+
+        .lang-arrow {
+            font-size: 10px;
+            color: var(--ant-text-tertiary);
+            user-select: none;
+            margin-left: 2px;
+        }
+
+        /* O select real fica invisivel sobreposto em todo o container */
+        .ant-select-lang {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
             cursor: pointer;
-            padding-right: 4px;
+            font-size: 16px;
+            -webkit-appearance: menulist;
         }
 
         .ant-select-lang option {
@@ -696,19 +713,21 @@
 
             .lang-selector-container {
                 height: 30px;
-                padding: 0 4px;
+                padding: 0 6px;
+                gap: 3px;
             }
 
             .lang-icon {
                 font-size: 13px;
-                margin-right: 3px;
             }
 
-            .ant-select-lang {
-                font-size: 11px;
+            .lang-current-text {
+                font-size: 12px;
                 font-weight: 600;
-                max-width: none;
-                padding-right: 0;
+            }
+
+            .lang-arrow {
+                font-size: 9px;
             }
 
             .navbar-cta .ant-btn {
@@ -738,16 +757,18 @@
             <div class="navbar-cta">
                 <div class="lang-selector-container">
                     <span class="lang-icon" aria-hidden="true">🌐</span>
+                    <span class="lang-current-text" id="lang-current-text">Português (BR)</span>
+                    <span class="lang-arrow" aria-hidden="true">▾</span>
                     <select id="lang-select" class="ant-select-lang" aria-label="Idioma / Language">
-                        <option value="pt-BR" data-full="Português (BR)" data-short="PT-BR" selected>Português (BR)</option>
-                        <option value="pt-PT" data-full="Português (PT)" data-short="PT-PT">Português (PT)</option>
-                        <option value="en" data-full="English (US)" data-short="EN">English (US)</option>
-                        <option value="es" data-full="Español" data-short="ES">Español</option>
-                        <option value="fr" data-full="Français" data-short="FR">Français</option>
-                        <option value="de" data-full="Deutsch" data-short="DE">Deutsch</option>
-                        <option value="it" data-full="Italiano" data-short="IT">Italiano</option>
-                        <option value="nl" data-full="Nederlands" data-short="NL">Nederlands</option>
-                        <option value="pl" data-full="Polski" data-short="PL">Polski</option>
+                        <option value="pt-BR" selected>Português (BR)</option>
+                        <option value="pt-PT">Português (PT)</option>
+                        <option value="en">English (US)</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                        <option value="it">Italiano</option>
+                        <option value="nl">Nederlands</option>
+                        <option value="pl">Polski</option>
                     </select>
                 </div>
                 <a href="index.html" class="ant-btn ant-btn-default navbar-btn-privacy" data-i18n="back_home">← Voltar ao Início</a>
@@ -902,6 +923,7 @@
                 if (!t) return;
 
                 document.documentElement.lang = lang;
+                updateLanguageDisplay(lang);
 
                 if (t.privacy_title) {
                     document.title = t.privacy_title + " — Kitta";
@@ -931,27 +953,48 @@
                 } catch (e) { }
             }
 
-            function updateLanguageOptionLabels() {
-                const isSmallScreen = window.innerWidth <= 600;
-                const select = document.getElementById('lang-select');
-                if (!select) return;
+            const LANG_SHORT_NAMES = {
+                'pt-BR': 'PT-BR',
+                'pt-PT': 'PT-PT',
+                'en': 'EN',
+                'es': 'ES',
+                'fr': 'FR',
+                'de': 'DE',
+                'it': 'IT',
+                'nl': 'NL',
+                'pl': 'PL'
+            };
 
-                const options = select.querySelectorAll('option');
-                options.forEach(opt => {
-                    const full = opt.getAttribute('data-full');
-                    const short = opt.getAttribute('data-short');
-                    if (isSmallScreen && short) {
-                        opt.textContent = short;
-                    } else if (full) {
-                        opt.textContent = full;
-                    }
-                });
+            const LANG_FULL_NAMES = {
+                'pt-BR': 'Português (BR)',
+                'pt-PT': 'Português (PT)',
+                'en': 'English (US)',
+                'es': 'Español',
+                'fr': 'Français',
+                'de': 'Deutsch',
+                'it': 'Italiano',
+                'nl': 'Nederlands',
+                'pl': 'Polski'
+            };
+
+            function updateLanguageDisplay(lang) {
+                if (!lang) {
+                    const sel = document.getElementById('lang-select');
+                    lang = (sel && sel.value) ? sel.value : 'pt-BR';
+                }
+                const isSmallScreen = window.innerWidth <= 600;
+                const label = document.getElementById('lang-current-text');
+                if (label) {
+                    label.textContent = isSmallScreen
+                        ? (LANG_SHORT_NAMES[lang] || lang)
+                        : (LANG_FULL_NAMES[lang] || lang);
+                }
             }
 
             function init() {
                 const currentLang = getInitialLanguage();
                 applyLanguage(currentLang);
-                updateLanguageOptionLabels();
+                updateLanguageDisplay();
 
                 const select = document.getElementById('lang-select');
                 if (select && !select.dataset.listenerBound) {
@@ -961,7 +1004,7 @@
                     });
                 }
 
-                window.addEventListener('resize', updateLanguageOptionLabels);
+                window.addEventListener('resize', updateLanguageDisplay);
             }
 
             if (document.readyState === 'loading') {
