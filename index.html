@@ -1127,7 +1127,7 @@
             };
 
             function updateLanguageDisplay(lang) {
-                if (!lang) {
+                if (!lang || typeof lang !== 'string') {
                     const sel = document.getElementById('lang-select');
                     lang = (sel && sel.value) ? sel.value : 'pt-BR';
                 }
@@ -1135,8 +1135,8 @@
                 const label = document.getElementById('lang-current-text');
                 if (label) {
                     label.textContent = isSmallScreen
-                        ? (LANG_SHORT_NAMES[lang] || lang)
-                        : (LANG_FULL_NAMES[lang] || lang);
+                        ? (LANG_SHORT_NAMES[lang] || 'PT-BR')
+                        : (LANG_FULL_NAMES[lang] || 'Português (BR)');
                 }
             }
 
@@ -1149,7 +1149,7 @@
 
                 const currentLang = getInitialLanguage();
                 applyLanguage(currentLang);
-                updateLanguageDisplay();
+                updateLanguageDisplay(currentLang);
 
                 const select = document.getElementById('lang-select');
                 if (select && !select.dataset.listenerBound) {
@@ -1159,7 +1159,9 @@
                     });
                 }
 
-                window.addEventListener('resize', updateLanguageDisplay);
+                window.addEventListener('resize', function () {
+                    updateLanguageDisplay();
+                });
             }
 
             if (document.readyState === 'loading') {
