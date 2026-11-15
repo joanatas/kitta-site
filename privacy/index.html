@@ -1,18 +1,18 @@
-<!DOCTYPE html>
-<html lang="en-GB">
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy — Kitta</title>
+    <title>Política de Privacidade — Kitta</title>
     <meta name="description"
         content="Política de Privacidade oficial do aplicativo Kitta. Armazenamento 100% local no celular, sem login, sem dados na nuvem e em total conformidade com a LGPD e GDPR.">
 
     <!-- favicons -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
     <!-- tipografia moderna e limpa no padrao ant design -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -589,27 +589,27 @@
     <!-- navbar topo -->
     <header class="navbar">
         <div class="navbar-container">
-            <a href="index.html" class="navbar-brand">
-                <img src="logo.png" alt="Kitta Logo" class="brand-logo-img">
+            <a href="/" class="navbar-brand">
+                <img src="/logo.png" alt="Kitta Logo" class="brand-logo-img">
                 <span class="brand-title">Kitta</span>
             </a>
             <ul class="navbar-menu">
-                <li><a href="index.html#sobre" class="navbar-link" data-i18n="nav_about">About</a></li>
-                <li><a href="index.html#recursos" class="navbar-link" data-i18n="nav_features">Features</a></li>
-                <li><a href="index.html#comparativo" class="navbar-link" data-i18n="nav_pro">Kitta Pro</a></li>
-                <li><a href="privacy.html" class="navbar-link" style="color: var(--ant-primary); font-weight: 600;"
-                        data-i18n="nav_privacy">Privacy</a></li>
+                <li><a href="/#sobre" class="navbar-link" data-i18n="nav_about">Sobre</a></li>
+                <li><a href="/#recursos" class="navbar-link" data-i18n="nav_features">Recursos</a></li>
+                <li><a href="/#comparativo" class="navbar-link" data-i18n="nav_pro">Kitta Pro</a></li>
+                <li><a href="/privacy/" class="navbar-link" style="color: var(--ant-primary); font-weight: 600;"
+                        data-i18n="nav_privacy">Privacidade</a></li>
             </ul>
             <div class="navbar-cta">
                 <div class="lang-selector-container">
                     <span class="lang-icon" aria-hidden="true">🌐</span>
-                    <span class="lang-current-text" id="lang-current-text">English (UK)</span>
+                    <span class="lang-current-text" id="lang-current-text">Português (BR)</span>
                     <span class="lang-arrow" aria-hidden="true">▾</span>
                     <select id="lang-select" class="ant-select-lang" aria-label="Idioma / Language">
                         <option value="pt-BR">Português (BR)</option>
                         <option value="pt-PT">Português (PT)</option>
                         <option value="en-US">English (US)</option>
-                        <option value="en-GB" selected>English (UK)</option>
+                        <option value="en-GB">English (UK)</option>
                         <option value="es">Español</option>
                         <option value="fr">Français</option>
                         <option value="de">Deutsch</option>
@@ -618,7 +618,8 @@
                         <option value="pl">Polski</option>
                     </select>
                 </div>
-                <a href="index.html" class="ant-btn ant-btn-default navbar-btn-privacy" data-i18n="back_home">← Back to Home</a>
+                <a href="/" class="ant-btn ant-btn-default navbar-btn-privacy" data-i18n="back_home">← Voltar
+                    ao Início</a>
                 <a href="https://play.google.com/store/apps/details?id=com.joanatas.kitta" target="_blank"
                     rel="noopener" class="ant-btn ant-btn-primary" data-i18n="nav_btn_play">Google Play</a>
             </div>
@@ -628,9 +629,9 @@
     <!-- conteudo principal -->
     <div class="main-wrapper">
         <div style="margin-bottom: 24px;">
-            <a href="index.html" class="ant-btn ant-btn-default"
+            <a href="/" class="ant-btn ant-btn-default"
                 style="display: inline-flex; align-items: center; gap: 6px;">
-                <span data-i18n="back_home">← Back to Home</span>
+                <span data-i18n="back_home">← Voltar ao Início</span>
             </a>
         </div>
 
@@ -640,72 +641,119 @@
         <section id="privacidade">
             <div class="ant-card">
                 <div class="ant-card-head">
-                    <span data-i18n="privacy_title">Privacy Policy</span>
-                    <span class="ant-tag ant-tag-blue" data-i18n="privacy_updated">Updated on 15 November 2026</span>
+                    <span data-i18n="privacy_title">Política de Privacidade</span>
+                    <span class="ant-tag ant-tag-blue" data-i18n="privacy_updated">Atualizado em 15/11/2026</span>
                 </div>
                 <div class="ant-card-body">
-                    <p class="doc-p" data-i18n-html="privacy_intro">This Privacy Policy describes how the <strong>Kitta</strong> application ("we", "our", or "app"), maintained by independent developer <strong>Joanatas Martins</strong>, protects and processes user data in full compliance with data protection laws (including the UK GDPR, Data Protection Act 2018, and EU GDPR) and Google Play Developer Policies.</p>
+                    <p class="doc-p" data-i18n-html="privacy_intro">
+                        Esta Política de Privacidade descreve como o aplicativo <strong>Kitta</strong> ("nós", "nosso"
+                        ou "aplicativo"), mantido pelo desenvolvedor independente <strong>Joanatas Martins</strong>,
+                        protege e trata os dados dos usuários em total conformidade com a LGPD (Lei Geral de Proteção de
+                        Dados), GDPR e com as diretrizes do Google Play.
+                    </p>
 
-                    <h3 class="doc-h3" data-i18n="privacy_s1_title">1. Local Storage and Data Sovereignty</h3>
-                    <p class="doc-p" data-i18n-html="privacy_s1_p1">Kitta adopts a <strong>100% Local Storage</strong> architecture. All records you add — including bill names, payees, monetary amounts, due dates, notes, categories, and income entries — are stored exclusively in the local SQLite database inside your mobile device's secure internal storage.</p>
-                    <p class="doc-p" data-i18n-html="privacy_s1_p2">We do not operate proprietary cloud synchronisation servers, and we have no access, possession, or visibility of any of your financial information.</p>
+                    <h3 class="doc-h3" data-i18n="privacy_s1_title">1. Armazenamento Local e Soberania dos Dados</h3>
+                    <p class="doc-p" data-i18n-html="privacy_s1_p1">
+                        O Kitta adota a arquitetura de <strong>Armazenamento 100% Local</strong>. Todos os registros que
+                        você adiciona — incluindo nomes de contas, credores, valores monetários, datas de vencimento,
+                        notas, categorias e recebimentos — são gravados exclusivamente no banco de dados SQLite local no
+                        armazenamento seguro do seu celular.
+                    </p>
+                    <p class="doc-p" data-i18n-html="privacy_s1_p2">
+                        Não mantemos servidores proprietários de sincronização em nuvem e não temos acesso, posse ou
+                        visibilidade de nenhuma de suas informações financeiras.
+                    </p>
 
-                    <h3 class="doc-h3" data-i18n="privacy_s2_title">2. Connected Services & Technology Providers</h3>
-                    <p class="doc-p" data-i18n="privacy_s2_p1">To enable distribution and app sustainability, we integrate libraries from trusted industry partners:</p>
+                    <h3 class="doc-h3" data-i18n="privacy_s2_title">2. Serviços Conectados & Provedores de Tecnologia
+                    </h3>
+                    <p class="doc-p" data-i18n="privacy_s2_p1">
+                        Para viabilizar a distribuição e a monetização do aplicativo, integramos bibliotecas de
+                        parceiros confiáveis:
+                    </p>
                     <ul class="doc-ul">
-                        <li data-i18n-html="privacy_s2_admob"><strong>Google AdMob (Free Version):</strong> Displays non-intrusive banner ads in the free version. Google AdMob SDK may collect anonymous device identifiers (Google Advertising ID) and basic telemetry for fraud prevention and ad delivery. See the <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener" class="text-link">Google Advertising Policies</a>.</li>
-                        <li data-i18n-html="privacy_s2_billing"><strong>Google Play Billing & RevenueCat (Kitta Pro):</strong> Subscription processing and billing are handled exclusively by Google Play. RevenueCat only validates the cryptographic store receipt. We never see or store your credit card or bank account details.</li>
+                        <li data-i18n-html="privacy_s2_admob">
+                            <strong>Google AdMob (Versão Gratuita):</strong> Exibe pequenos anúncios institucionais na
+                            versão gratuita. O SDK do Google AdMob pode coletar identificadores anônimos de dispositivo
+                            (Google Advertising ID) e telemetria básica para prevenção de fraudes e exibição adequada de
+                            publicidade. Consulte a <a href="https://policies.google.com/technologies/ads"
+                                target="_blank" rel="noopener" class="text-link">Política de Publicidade do Google</a>.
+                        </li>
+                        <li data-i18n-html="privacy_s2_billing">
+                            <strong>Google Play Billing & RevenueCat (Kitta Pro):</strong> O processamento e cobrança de
+                            assinaturas são efetuados exclusivamente pelo Google Play. O RevenueCat apenas valida a
+                            autenticidade do comprovante da loja. Nós nunca temos acesso aos dados do seu cartão de
+                            crédito ou conta bancária.
+                        </li>
                     </ul>
-                    <p class="doc-p" data-i18n-html="privacy_s2_note"><em>When you subscribe to <strong>Kitta Pro</strong>, all advertising SDK calls are immediately deactivated.</em></p>
+                    <p class="doc-p" data-i18n-html="privacy_s2_note">
+                        <em>Ao assinar o <strong>Kitta Pro</strong>, todas as chamadas de exibição de anúncios são
+                            imediatamente desligadas.</em>
+                    </p>
 
-                    <h3 class="doc-h3" data-i18n="privacy_s3_title">3. Android Permissions Requested</h3>
+                    <h3 class="doc-h3" data-i18n="privacy_s3_title">3. Permissões Solicitadas no Android</h3>
                     <div class="ant-table-wrapper" style="margin: 14px 0 20px;">
                         <table class="ant-table">
                             <thead>
                                 <tr>
-                                    <th style="width: 35%;" data-i18n="privacy_s3_th_perm">Permission</th>
-                                    <th data-i18n="privacy_s3_th_purpose">Purpose in the App</th>
+                                    <th style="width: 35%;" data-i18n="privacy_s3_th_perm">Permissão</th>
+                                    <th data-i18n="privacy_s3_th_purpose">Finalidade no Aplicativo</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td><code>POST_NOTIFICATIONS</code></td>
-                                    <td data-i18n="privacy_s3_post">Display local notifications in the system notification shade to alert you about due or overdue bills.</td>
+                                    <td data-i18n="privacy_s3_post">Exibir notificações locais na barra de avisos do
+                                        celular para alertar sobre
+                                        contas a vencer ou vencidas.</td>
                                 </tr>
                                 <tr>
                                     <td><code>SCHEDULE_EXACT_ALARM</code></td>
-                                    <td data-i18n="privacy_s3_alarm">Schedule due date reminders at the exact time chosen by the user, ensuring timely alerts even in power-saving modes.</td>
+                                    <td data-i18n="privacy_s3_alarm">Agendar os lembretes de vencimento no horário exato
+                                        configurado pelo usuário,
+                                        garantindo a pontualidade do alerta mesmo em modo de economia de energia.</td>
                                 </tr>
                                 <tr>
                                     <td><code>RECEIVE_BOOT_COMPLETED</code></td>
-                                    <td data-i18n="privacy_s3_boot">Restore and reschedule active local reminders if the device is rebooted or restarted.</td>
+                                    <td data-i18n="privacy_s3_boot">Reativar o agendamento dos lembretes locais caso
+                                        você reinicie ou desligue o
+                                        aparelho.</td>
                                 </tr>
                                 <tr>
                                     <td><code>INTERNET</code></td>
-                                    <td data-i18n="privacy_s3_internet">Required to load AdMob banners (in the free tier) and validate the Kitta Pro purchase receipt with Google Play.</td>
+                                    <td data-i18n="privacy_s3_internet">Necessária para carregar os banners do AdMob (no
+                                        modo gratuito) e validar o
+                                        recibo de compra do Kitta Pro junto à Google Play.</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <h3 class="doc-h3" data-i18n="privacy_s4_title">4. Permanent Data Deletion</h3>
-                    <p class="doc-p" data-i18n="privacy_s4_p1">Because your data does not reside on external cloud servers, you maintain complete sovereignty:</p>
+                    <h3 class="doc-h3" data-i18n="privacy_s4_title">4. Exclusão Permanente de Informações</h3>
+                    <p class="doc-p" data-i18n="privacy_s4_p1">
+                        Como seus dados não residem em servidores em nuvem, você detém o controle total:
+                    </p>
                     <ul class="doc-ul">
-                        <li data-i18n="privacy_s4_li1">You can delete any bill or income entry at any time inside the app.</li>
-                        <li data-i18n="privacy_s4_li2">To permanently erase all data, simply uninstall Kitta from your device or select "Clear Storage / Clear Data" in your Android app settings.</li>
+                        <li data-i18n="privacy_s4_li1">Você pode apagar qualquer conta ou recebimento a qualquer momento
+                            dentro do app.</li>
+                        <li data-i18n="privacy_s4_li2">Para apagar todos os dados definitivamente, basta desinstalar o
+                            Kitta do aparelho ou
+                            selecionar a opção "Limpar Armazenamento" nas configurações do Android.</li>
                     </ul>
 
-                    <h3 class="doc-h3" data-i18n="privacy_s5_title">5. Developer Contact</h3>
-                    <p class="doc-p" data-i18n="privacy_s5_p1">For support, questions regarding this policy, or feedback, please contact us directly via email:</p>
+                    <h3 class="doc-h3" data-i18n="privacy_s5_title">5. Contato com o Desenvolvedor</h3>
+                    <p class="doc-p" data-i18n="privacy_s5_p1">
+                        Para suporte, dúvidas relativas a esta política ou sugestões de melhorias, entre em contato
+                        diretamente pelo e-mail:
+                    </p>
                     <div class="ant-alert ant-alert-info" style="margin-top: 10px; margin-bottom: 0;">
                         <div class="ant-alert-icon">✉</div>
                         <div class="ant-alert-content">
-                            <strong data-i18n="privacy_s5_dev_label">Developer:</strong> <span
+                            <strong data-i18n="privacy_s5_dev_label">Desenvolvedor:</strong> <span
                                 data-i18n="privacy_s5_dev">Joanatas Rodrigues Martins</span><br>
-                            <strong data-i18n="privacy_s5_email_label">Email:</strong> <a
+                            <strong data-i18n="privacy_s5_email_label">E-mail:</strong> <a
                                 href="mailto:joanatas.dev@gmail.com" class="text-link">joanatas.dev@gmail.com</a><br>
-                            <strong data-i18n="privacy_s5_location_label">Location:</strong> <span
-                                data-i18n="privacy_s5_location">Brazil</span>
+                            <strong data-i18n="privacy_s5_location_label">Localidade:</strong> <span
+                                data-i18n="privacy_s5_location">Brasil</span>
                         </div>
                     </div>
                 </div>
@@ -717,18 +765,19 @@
     <!-- footer ant design -->
     <footer class="ant-footer">
         <div class="footer-links">
-            <a href="index.html#sobre" data-i18n="footer_about">About Kitta</a>
-            <a href="index.html#recursos" data-i18n="footer_features">Features</a>
-            <a href="index.html#comparativo" data-i18n="footer_pro">Kitta Pro</a>
-            <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+            <a href="/#sobre" data-i18n="footer_about">Sobre o Kitta</a>
+            <a href="/#recursos" data-i18n="footer_features">Recursos</a>
+            <a href="/#comparativo" data-i18n="footer_pro">Kitta Pro</a>
+            <a href="/privacy/" data-i18n="footer_privacy">Política de Privacidade</a>
             <a href="/app-ads.txt" target="_blank">app-ads.txt</a>
-            <a href="mailto:joanatas.dev@gmail.com" data-i18n="footer_contact">Contact</a>
+            <a href="mailto:joanatas.dev@gmail.com" data-i18n="footer_contact">Contato</a>
         </div>
-        <p data-i18n="footer_copy">© 2026 Kitta — Developed by Joanatas Martins. All rights reserved.</p>
+        <p data-i18n="footer_copy">&copy; 2026 Kitta — Desenvolvido por Joanatas Martins. Todos os direitos reservados.
+        </p>
     </footer>
 
     <!-- script i18n -->
-    <script src="translations.js"></script>
+    <script src="/translations.js"></script>
     <script>
         (function () {
             function getInitialLanguage() {
