@@ -154,6 +154,7 @@
             font-weight: 500;
             border-radius: var(--ant-radius);
             transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+            white-space: nowrap;
         }
 
         .navbar-link:hover {
@@ -195,12 +196,21 @@
             line-height: 1;
         }
 
-        .lang-current-text {
+        .lang-text-full,
+        .lang-text-short {
             font-size: 13px;
             font-weight: 500;
             color: var(--ant-text);
             white-space: nowrap;
             user-select: none;
+        }
+
+        .lang-text-short {
+            display: none;
+        }
+
+        .lang-text-full {
+            display: inline;
         }
 
         .lang-arrow {
@@ -506,6 +516,13 @@
             color: var(--ant-primary);
         }
 
+        /* responsividade para telas medias */
+        @media (max-width: 1080px) {
+            .navbar-btn-privacy {
+                display: none;
+            }
+        }
+
         /* responsividade mobile */
         @media (max-width: 860px) {
             .navbar-container {
@@ -566,7 +583,12 @@
                 font-size: 13px;
             }
 
-            .lang-current-text {
+            .lang-text-full {
+                display: none;
+            }
+
+            .lang-text-short {
+                display: inline;
                 font-size: 12px;
                 font-weight: 600;
             }
@@ -603,7 +625,8 @@
             <div class="navbar-cta">
                 <div class="lang-selector-container">
                     <span class="lang-icon" aria-hidden="true">🌐</span>
-                    <span class="lang-current-text" id="lang-current-text">Português (BR)</span>
+                    <span class="lang-text-full" id="lang-text-full">Português (BR)</span>
+                    <span class="lang-text-short" id="lang-text-short">PT-BR</span>
                     <span class="lang-arrow" aria-hidden="true">▾</span>
                     <select id="lang-select" class="ant-select-lang" aria-label="Idioma / Language">
                         <option value="pt-BR">Português (BR)</option>
@@ -885,12 +908,13 @@
                     const sel = document.getElementById('lang-select');
                     lang = (sel && sel.value) ? sel.value : 'pt-BR';
                 }
-                const isSmallScreen = window.innerWidth <= 600;
-                const label = document.getElementById('lang-current-text');
-                if (label) {
-                    label.textContent = isSmallScreen
-                        ? (LANG_SHORT_NAMES[lang] || 'PT-BR')
-                        : (LANG_FULL_NAMES[lang] || 'Português (BR)');
+                const full = document.getElementById('lang-text-full');
+                const short = document.getElementById('lang-text-short');
+                if (full) {
+                    full.textContent = LANG_FULL_NAMES[lang] || 'Português (BR)';
+                }
+                if (short) {
+                    short.textContent = LANG_SHORT_NAMES[lang] || 'PT-BR';
                 }
             }
 
@@ -906,10 +930,6 @@
                         applyLanguage(e.target.value);
                     });
                 }
-
-                window.addEventListener('resize', function () {
-                    updateLanguageDisplay();
-                });
             }
 
             if (document.readyState === 'loading') {
