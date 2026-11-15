@@ -762,7 +762,8 @@
                     <select id="lang-select" class="ant-select-lang" aria-label="Idioma / Language">
                         <option value="pt-BR" selected>Português (BR)</option>
                         <option value="pt-PT">Português (PT)</option>
-                        <option value="en">English (US)</option>
+                        <option value="en-US">English (US)</option>
+                        <option value="en-GB">English (UK)</option>
                         <option value="es">Español</option>
                         <option value="fr">Français</option>
                         <option value="de">Deutsch</option>
@@ -903,7 +904,8 @@
                     const normalized = bl.toLowerCase();
                     if (normalized === 'pt-pt') return 'pt-PT';
                     if (normalized.startsWith('pt')) return 'pt-BR';
-                    if (normalized.startsWith('en')) return 'en';
+                    if (normalized === 'en-gb') return 'en-GB';
+                    if (normalized.startsWith('en')) return 'en-US';
                     if (normalized.startsWith('es')) return 'es';
                     if (normalized.startsWith('fr')) return 'fr';
                     if (normalized.startsWith('de')) return 'de';
@@ -916,6 +918,7 @@
             }
 
             function applyLanguage(lang) {
+                if (lang === 'en') lang = 'en-US';
                 if (typeof TRANSLATIONS === 'undefined' || !TRANSLATIONS[lang]) {
                     lang = 'pt-BR';
                 }
@@ -956,7 +959,9 @@
             const LANG_SHORT_NAMES = {
                 'pt-BR': 'PT-BR',
                 'pt-PT': 'PT-PT',
-                'en': 'EN',
+                'en-US': 'EN-US',
+                'en-GB': 'EN-GB',
+                'en': 'EN-US',
                 'es': 'ES',
                 'fr': 'FR',
                 'de': 'DE',
@@ -968,6 +973,8 @@
             const LANG_FULL_NAMES = {
                 'pt-BR': 'Português (BR)',
                 'pt-PT': 'Português (PT)',
+                'en-US': 'English (US)',
+                'en-GB': 'English (UK)',
                 'en': 'English (US)',
                 'es': 'Español',
                 'fr': 'Français',
