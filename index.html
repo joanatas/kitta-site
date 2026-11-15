@@ -1096,39 +1096,32 @@
                 });
             }
 
-            // Init on DOM ready
-            document.addEventListener('DOMContentLoaded', function () {
-                
-            // Redirecionamento retrocompatível para links antigos com hash (#privacidade ou #privacy)
-            if (window.location.hash === '#privacidade' || window.location.hash === '#privacy') {
-                window.location.replace('privacy.html');
-            }
+            function init() {
+                // Redirecionamento retrocompativel para links antigos com hash (#privacidade ou #privacy)
+                if (window.location.hash === '#privacidade' || window.location.hash === '#privacy') {
+                    window.location.replace('privacy.html');
+                    return;
+                }
 
                 const currentLang = getInitialLanguage();
                 applyLanguage(currentLang);
                 updateLanguageOptionLabels();
 
                 const select = document.getElementById('lang-select');
-                if (select) {
+                if (select && !select.dataset.listenerBound) {
+                    select.dataset.listenerBound = 'true';
                     select.addEventListener('change', function (e) {
                         applyLanguage(e.target.value);
                     });
                 }
 
                 window.addEventListener('resize', updateLanguageOptionLabels);
-            });
-
-            // Fallback immediate execution
-            if (document.readyState === 'interactive' || document.readyState === 'complete') {
-                
-            // Redirecionamento retrocompatível para links antigos com hash (#privacidade ou #privacy)
-            if (window.location.hash === '#privacidade' || window.location.hash === '#privacy') {
-                window.location.replace('privacy.html');
             }
 
-                const currentLang = getInitialLanguage();
-                applyLanguage(currentLang);
-                updateLanguageOptionLabels();
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
             }
         })();
     </script>

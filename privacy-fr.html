@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de Confidentialité — Kitta</title>
+    <meta name="description"
+        content="Política de Privacidade oficial do aplicativo Kitta. Armazenamento 100% local no celular, sem login, sem dados na nuvem e em total conformidade com a LGPD e GDPR.">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <!-- Tipografia moderna e limpa no padrão Ant Design -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ==========================================================================
+            ANT DESIGN LIGHT DESIGN SYSTEM TOKENS
+           ========================================================================== */
+        :root {
+            /* Cores de Marca / Primárias (AntD Blue) */
+            --ant-primary: #1677ff;
+            --ant-primary-hover: #4096ff;
+            --ant-primary-active: #0958d9;
+            --ant-primary-bg: #e6f4ff;
+            --ant-primary-border: #91caff;
+
+            /* Tipografia & Cores de Texto */
+            --ant-text: #1f1f1f;
+            --ant-text-secondary: #595959;
+            --ant-text-tertiary: #8c8c8c;
+            --ant-text-quaternary: #bfbfbf;
+
+            /* Fundos & Superfícies (Tema Claro) */
+            --ant-bg-layout: #f5f5f7;
+            --ant-bg-container: #ffffff;
+            --ant-bg-spotlight: #fafafa;
+            --ant-bg-subtle: #f8fafc;
+
+            /* Bordas & Divisores */
+            --ant-border: #d9d9d9;
+            --ant-border-secondary: #f0f0f0;
+
+            /* Geometria: Cantos Levemente Arredondados (AntD default) */
+            --ant-radius-xs: 2px;
+            --ant-radius-sm: 4px;
+            --ant-radius: 6px;
+            --ant-radius-lg: 8px;
+
+            /* Sombras Ant Design (Sutis e Elegantes) */
+            --ant-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+            --ant-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+            --ant-shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 2px 8px -2px rgba(0, 0, 0, 0.04);
+            --ant-shadow-hover: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+
+            /* Cores de Alerta & Sucesso */
+            --ant-success: #52c41a;
+            --ant-success-bg: #f6ffed;
+            --ant-success-border: #b7eb8f;
+            --ant-warning: #faad14;
+            --ant-warning-bg: #fffbe6;
+            --ant-warning-border: #ffe58f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--ant-bg-layout);
+            color: var(--ant-text);
+            font-size: 14px;
+            line-height: 1.5714;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ==========================================================================
+           HEADER / NAVBAR (AntD Navigation Bar)
+           ========================================================================== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--ant-border-secondary);
+            height: 64px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-container {
+            max-width: 1080px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--ant-text);
+            flex-shrink: 0;
+        }
+
+        .brand-logo-img {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--ant-radius);
+            object-fit: cover;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--ant-border-secondary);
+        }
+
+        .hero-logo-wrapper {
+            margin-bottom: 20px;
+        }
+
+        .hero-logo-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 18px;
+            object-fit: cover;
+            box-shadow: 0 8px 24px -4px rgba(22, 119, 255, 0.2);
+            border: 1px solid var(--ant-border-secondary);
+            background: #ffffff;
+        }
+
+        .brand-title {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .navbar-menu {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .navbar-link {
+            padding: 6px 14px;
+            color: var(--ant-text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: var(--ant-radius);
+            transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .navbar-link:hover {
+            color: var(--ant-primary);
+            background: var(--ant-bg-spotlight);
+        }
+
+        .navbar-cta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        /* Seletor de Idioma Ant Design */
+        .lang-selector-container {
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            background: #ffffff;
+            border: 1px solid var(--ant-border);
+            border-radius: var(--ant-radius);
+            padding: 0 8px;
+            height: 36px;
+            transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .lang-selector-container:hover,
+        .lang-selector-container:focus-within {
+            border-color: var(--ant-primary);
+            box-shadow: 0 0 0 2px var(--ant-primary-bg);
+        }
+
+        .lang-icon {
+            font-size: 14px;
+            margin-right: 6px;
+            user-select: none;
+            line-height: 1;
+        }
+
+        .ant-select-lang {
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--ant-text);
+            outline: none;
+            cursor: pointer;
+            padding-right: 4px;
+        }
+
+        .ant-select-lang option {
+            background: #ffffff;
+            color: var(--ant-text);
+        }
+
+        /* ==========================================================================
+           BUTTONS & TAGS (Ant Design Components)
+           ========================================================================== */
+        .ant-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            height: 36px;
+            padding: 4px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: var(--ant-radius);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        .ant-btn-primary {
+            background-color: var(--ant-primary);
+            border: 1px solid var(--ant-primary);
+            color: #ffffff;
+            box-shadow: 0 2px 0 rgba(5, 145, 255, 0.1);
+        }
+
+        .ant-btn-primary:hover {
+            background-color: var(--ant-primary-hover);
+            border-color: var(--ant-primary-hover);
+            color: #ffffff;
+        }
+
+        .ant-btn-primary:active {
+            background-color: var(--ant-primary-active);
+            border-color: var(--ant-primary-active);
+        }
+
+        .ant-btn-default {
+            background-color: #ffffff;
+            border: 1px solid var(--ant-border);
+            color: var(--ant-text);
+            box-shadow: 0 2px 0 rgba(0, 0, 0, 0.02);
+        }
+
+        .ant-btn-default:hover {
+            border-color: var(--ant-primary);
+            color: var(--ant-primary);
+        }
+
+        .ant-btn-lg {
+            height: 42px;
+            padding: 6px 22px;
+            font-size: 15px;
+            border-radius: var(--ant-radius-lg);
+        }
+
+        .ant-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 20px;
+            border-radius: var(--ant-radius-sm);
+            border: 1px solid var(--ant-border);
+            background: var(--ant-bg-spotlight);
+            color: var(--ant-text-secondary);
+        }
+
+        .ant-tag-blue {
+            background: var(--ant-primary-bg);
+            border-color: var(--ant-primary-border);
+            color: var(--ant-primary-active);
+        }
+
+        .ant-tag-green {
+            background: var(--ant-success-bg);
+            border-color: var(--ant-success-border);
+            color: #389e0d;
+        }
+
+        .ant-tag-pro {
+            background: #fff7e6;
+            border-color: #ffd591;
+            color: #d46b08;
+            font-weight: 600;
+        }
+
+        /* ==========================================================================
+           LAYOUT / WRAPPER
+           ========================================================================== */
+        .main-wrapper {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        /* ==========================================================================
+           HERO SECTION
+           ========================================================================== */
+        .hero {
+            text-align: center;
+            padding: 48px 0 64px;
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        .hero-tags {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hero-title {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.25;
+            color: var(--ant-text);
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            line-height: 1.65;
+            color: var(--ant-text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        /* ==========================================================================
+           ALERT COMPONENT (Ant Design Alert)
+           ========================================================================== */
+        .ant-alert {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px 18px;
+            border-radius: var(--ant-radius-lg);
+            margin-bottom: 28px;
+            font-size: 13.5px;
+            line-height: 1.55;
+        }
+
+        .ant-alert-info {
+            background-color: var(--ant-primary-bg);
+            border: 1px solid var(--ant-primary-border);
+            color: var(--ant-text);
+        }
+
+        .ant-alert-icon {
+            font-size: 18px;
+            line-height: 1;
+            color: var(--ant-primary);
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .ant-alert-content {
+            flex: 1;
+        }
+
+        .ant-alert-title {
+            font-weight: 600;
+            color: var(--ant-text);
+            margin-bottom: 2px;
+        }
+
+        /* ==========================================================================
+           CARD COMPONENT (Ant Design Card)
+           ========================================================================== */
+        .ant-card {
+            background: var(--ant-bg-container);
+            border: 1px solid var(--ant-border-secondary);
+            border-radius: var(--ant-radius-lg);
+            box-shadow: var(--ant-shadow-sm);
+            margin-bottom: 32px;
+            overflow: hidden;
+            transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .ant-card:hover {
+            box-shadow: var(--ant-shadow-card);
+        }
+
+        .ant-card-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 54px;
+            padding: 0 24px;
+            border-bottom: 1px solid var(--ant-border-secondary);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--ant-text);
+        }
+
+        .ant-card-body {
+            padding: 24px;
+        }
+
+        /* ==========================================================================
+           FEATURE GRID
+           ========================================================================== */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 48px;
+        }
+
+        .feature-card {
+            background: var(--ant-bg-container);
+            border: 1px solid var(--ant-border-secondary);
+            border-radius: var(--ant-radius-lg);
+            padding: 22px;
+            box-shadow: var(--ant-shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: all 0.25s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--ant-primary-border);
+            transform: translateY(-2px);
+            box-shadow: var(--ant-shadow-card);
+        }
+
+        .feature-icon-wrapper {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--ant-radius);
+            background: var(--ant-primary-bg);
+            color: var(--ant-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .feature-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--ant-text);
+        }
+
+        .feature-desc {
+            font-size: 13.5px;
+            color: var(--ant-text-secondary);
+            line-height: 1.55;
+        }
+
+        /* ==========================================================================
+           TABLE COMPONENT (Ant Design Table)
+           ========================================================================== */
+        .ant-table-wrapper {
+            border: 1px solid var(--ant-border-secondary);
+            border-radius: var(--ant-radius-lg);
+            overflow: hidden;
+            background: var(--ant-bg-container);
+            margin: 20px 0;
+        }
+
+        table.ant-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 13.5px;
+        }
+
+        table.ant-table th {
+            background: var(--ant-bg-spotlight);
+            color: var(--ant-text);
+            font-weight: 600;
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--ant-border-secondary);
+        }
+
+        table.ant-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--ant-border-secondary);
+            color: var(--ant-text-secondary);
+        }
+
+        table.ant-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        table.ant-table tbody tr:hover td {
+            background: #fafafa;
+        }
+
+        .text-strong {
+            color: var(--ant-text);
+            font-weight: 600;
+        }
+
+        /* ==========================================================================
+           TYPOGRAPHY SECTIONS
+           ========================================================================== */
+        .section-header {
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--ant-text);
+            letter-spacing: -0.01em;
+            margin-bottom: 6px;
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+            color: var(--ant-text-tertiary);
+        }
+
+        .doc-h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--ant-text);
+            margin: 24px 0 8px;
+        }
+
+        .doc-p {
+            font-size: 14px;
+            color: var(--ant-text-secondary);
+            line-height: 1.65;
+            margin-bottom: 14px;
+        }
+
+        .doc-ul {
+            margin: 0 0 16px 20px;
+            color: var(--ant-text-secondary);
+        }
+
+        .doc-ul li {
+            margin-bottom: 6px;
+            line-height: 1.6;
+        }
+
+        code {
+            font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 12.5px;
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: var(--ant-radius-xs);
+            border: 1px solid #e8e8e8;
+            color: #d4380d;
+        }
+
+        a.text-link {
+            color: var(--ant-primary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a.text-link:hover {
+            color: var(--ant-primary-hover);
+            text-decoration: underline;
+        }
+
+        /* ==========================================================================
+           FOOTER (Ant Design Minimalist Footer)
+           ========================================================================== */
+        footer.ant-footer {
+            border-top: 1px solid var(--ant-border-secondary);
+            background: #ffffff;
+            padding: 40px 24px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--ant-text-tertiary);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--ant-text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--ant-primary);
+        }
+
+        /* ==========================================================================
+           RESPONSIVIDADE (MOBILE)
+           ========================================================================== */
+        @media (max-width: 860px) {
+            .navbar-container {
+                padding: 0 16px;
+            }
+
+            .navbar-menu,
+            .navbar-btn-privacy {
+                display: none;
+            }
+
+            .lang-selector-container {
+                height: 32px;
+                padding: 0 6px;
+            }
+
+            .ant-select-lang {
+                font-size: 12px;
+                max-width: 130px;
+            }
+
+            .navbar-cta .ant-btn {
+                height: 32px;
+                padding: 4px 12px;
+                font-size: 13px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 28px;
+            }
+
+            .main-wrapper {
+                padding: 24px 16px 60px;
+            }
+
+            .ant-card-head,
+            .ant-card-body {
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar-container {
+                padding: 0 12px;
+            }
+
+            .brand-title {
+                font-size: 18px;
+            }
+
+            .navbar-cta {
+                gap: 8px;
+            }
+
+            .lang-selector-container {
+                height: 30px;
+                padding: 0 4px;
+            }
+
+            .lang-icon {
+                font-size: 13px;
+                margin-right: 3px;
+            }
+
+            .ant-select-lang {
+                font-size: 11px;
+                font-weight: 600;
+                max-width: none;
+                padding-right: 0;
+            }
+
+            .navbar-cta .ant-btn {
+                height: 30px;
+                padding: 3px 10px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR TOPO -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <img src="logo.png" alt="Kitta Logo" class="brand-logo-img">
+                <span class="brand-title">Kitta</span>
+            </a>
+            <ul class="navbar-menu">
+                <li><a href="index.html#sobre" class="navbar-link" data-i18n="nav_about">À propos</a></li>
+                <li><a href="index.html#recursos" class="navbar-link" data-i18n="nav_features">Fonctionnalités</a></li>
+                <li><a href="index.html#comparativo" class="navbar-link" data-i18n="nav_pro">Kitta Pro</a></li>
+                <li><a href="privacy.html" class="navbar-link" style="color: var(--ant-primary); font-weight: 600;" data-i18n="nav_privacy">Confidentialité</a></li>
+            </ul>
+            <div class="navbar-cta">
+                <div class="lang-selector-container">
+                    <span class="lang-icon" aria-hidden="true">🌐</span>
+                    <select id="lang-select" class="ant-select-lang" aria-label="Idioma / Language">
+                        <option value="pt-BR" data-full="Português (BR)" data-short="PT-BR">Português (BR)</option>
+                        <option value="pt-PT" data-full="Português (PT)" data-short="PT-PT">Português (PT)</option>
+                        <option value="en" data-full="English (US)" data-short="EN">English (US)</option>
+                        <option value="es" data-full="Español" data-short="ES">Español</option>
+                        <option value="fr" data-full="Français" data-short="FR" selected>Français</option>
+                        <option value="de" data-full="Deutsch" data-short="DE">Deutsch</option>
+                        <option value="it" data-full="Italiano" data-short="IT">Italiano</option>
+                        <option value="nl" data-full="Nederlands" data-short="NL">Nederlands</option>
+                        <option value="pl" data-full="Polski" data-short="PL">Polski</option>
+                    </select>
+                </div>
+                <a href="index.html" class="ant-btn ant-btn-default navbar-btn-privacy" data-i18n="back_home">← Retour à l'accueil</a>
+                <a href="https://play.google.com/store/apps/details?id=com.joanatas.kitta" target="_blank"
+                    rel="noopener" class="ant-btn ant-btn-primary" data-i18n="nav_btn_play">Google Play</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="main-wrapper">
+        <div style="margin-bottom: 24px;">
+            <a href="index.html" class="ant-btn ant-btn-default" style="display: inline-flex; align-items: center; gap: 6px;">
+                <span data-i18n="back_home">← Retour à l'accueil</span>
+            </a>
+        </div>
+
+
+
+        <!-- SEÇÃO POLÍTICA DE PRIVACIDADE -->
+        <section id="privacidade">
+            <div class="ant-card">
+                <div class="ant-card-head">
+                    <span data-i18n="privacy_title">Politique de Confidentialité</span>
+                    <span class="ant-tag ant-tag-blue" data-i18n="privacy_updated">Mis à jour le 15/11/2026</span>
+                </div>
+                <div class="ant-card-body">
+                    <p class="doc-p" data-i18n-html="privacy_intro">Cette Politique de Confidentialité décrit comment l'application <strong>Kitta</strong> ("nous", "notre" ou "application"), éditée par le développeur indépendant <strong>Joanatas Martins</strong>, protège et traite les données des utilisateurs conformément au RGPD et aux règles de Google Play.</p>
+
+                    <h3 class="doc-h3" data-i18n="privacy_s1_title">1. Stockage Local et Souveraineté des Données</h3>
+                    <p class="doc-p" data-i18n-html="privacy_s1_p1">Kitta adopte une architecture de <strong>Stockage 100% Local</strong>. Tous les enregistrements ajoutés — noms de factures, bénéficiaires, montants, échéances, notes, catégories et revenus — sont enregistrés exclusivement dans la base de données SQLite locale sur votre téléphone.</p>
+                    <p class="doc-p" data-i18n-html="privacy_s1_p2">Nous n'exploitons aucun serveur de synchronisation sur le cloud et n'avons aucun accès ni visibilité sur vos données financières.</p>
+
+                    <h3 class="doc-h3" data-i18n="privacy_s2_title">2. Services Connectés & Fournisseurs Tiers</h3>
+                    <p class="doc-p" data-i18n="privacy_s2_p1">Pour assurer la distribution et la monétisation de l'application, nous intégrons des bibliothèques de partenaires fiables :</p>
+                    <ul class="doc-ul">
+                        <li data-i18n-html="privacy_s2_admob"><strong>Google AdMob (Version Gratuite) :</strong> Affiche de petites bannières publicitaires. Le SDK Google AdMob peut collecter des identifiants d'appareil anonymes (Google Advertising ID) et une télémétrie de base pour la prévention des fraudes et l'affichage d'annonces. Consultez les <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener" class="text-link">Règles de Publicité Google</a>.</li>
+                        <li data-i18n-html="privacy_s2_billing"><strong>Google Play Billing & RevenueCat (Kitta Pro) :</strong> La facturation des abonnements est assurée exclusivement par Google Play. RevenueCat valide uniquement le reçu cryptographique du store. Nous n'avons jamais accès à vos coordonnées bancaires.</li>
+                    </ul>
+                    <p class="doc-p" data-i18n-html="privacy_s2_note"><em>Lors de la souscription à <strong>Kitta Pro</strong>, tous les appels publicitaires sont instantanément désactivés.</em></p>
+
+                    <h3 class="doc-h3" data-i18n="privacy_s3_title">3. Permissions Requises sur Android</h3>
+                    <div class="ant-table-wrapper" style="margin: 14px 0 20px;">
+                        <table class="ant-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 35%;" data-i18n="privacy_s3_th_perm">Permission</th>
+                                    <th data-i18n="privacy_s3_th_purpose">Finalité dans l'Application</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>POST_NOTIFICATIONS</code></td>
+                                    <td data-i18n="privacy_s3_post">Afficher des notifications locales dans la barre d'état pour vous avertir des factures dues ou en retard.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>SCHEDULE_EXACT_ALARM</code></td>
+                                    <td data-i18n="privacy_s3_alarm">Programmer les rappels à l'heure exacte définie par l'utilisateur, assurant la ponctualité de l'alerte même en mode économie d'énergie.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>RECEIVE_BOOT_COMPLETED</code></td>
+                                    <td data-i18n="privacy_s3_boot">Réactiver la programmation des rappels locaux en cas de redémarrage de l'appareil.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>INTERNET</code></td>
+                                    <td data-i18n="privacy_s3_internet">Nécessaire pour charger les bannières AdMob (mode gratuit) et valider le reçu d'achat Kitta Pro auprès de Google Play.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 class="doc-h3" data-i18n="privacy_s4_title">4. Suppression Définitive des Données</h3>
+                    <p class="doc-p" data-i18n="privacy_s4_p1">Comme vos données ne résident sur aucun serveur externe, vous en conservez le contrôle total :</p>
+                    <ul class="doc-ul">
+                        <li data-i18n="privacy_s4_li1">Vous pouvez supprimer n'importe quelle facture ou revenu à tout moment dans l'application.</li>
+                        <li data-i18n="privacy_s4_li2">Pour effacer toutes les données définitivement, désinstallez simplement Kitta de votre appareil ou choisissez "Effacer le stockage" dans les paramètres Android.</li>
+                    </ul>
+
+                    <h3 class="doc-h3" data-i18n="privacy_s5_title">5. Contact avec le Développeur</h3>
+                    <p class="doc-p" data-i18n="privacy_s5_p1">Pour toute assistance, question relative à cette politique ou suggestion, contactez-nous directement par e-mail :</p>
+                    <div class="ant-alert ant-alert-info" style="margin-top: 10px; margin-bottom: 0;">
+                        <div class="ant-alert-icon">✉</div>
+                        <div class="ant-alert-content">
+                            <strong data-i18n="privacy_s5_dev_label">Développeur :</strong> <span
+                                data-i18n="privacy_s5_dev">Joanatas Rodrigues Martins</span><br>
+                            <strong data-i18n="privacy_s5_email_label">E-mail :</strong> <a
+                                href="mailto:joanatas.dev@gmail.com" class="text-link">joanatas.dev@gmail.com</a><br>
+                            <strong data-i18n="privacy_s5_location_label">Localisation :</strong> <span
+                                data-i18n="privacy_s5_location">Brésil</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FOOTER ANT DESIGN -->
+    <footer class="ant-footer">
+        <div class="footer-links">
+            <a href="index.html#sobre" data-i18n="footer_about">À propos de Kitta</a>
+            <a href="index.html#recursos" data-i18n="footer_features">Fonctionnalités</a>
+            <a href="index.html#comparativo" data-i18n="footer_pro">Kitta Pro</a>
+            <a href="privacy.html" data-i18n="footer_privacy">Politique de Confidentialité</a>
+            <a href="/app-ads.txt" target="_blank">app-ads.txt</a>
+            <a href="mailto:joanatas.dev@gmail.com" data-i18n="footer_contact">Contact</a>
+        </div>
+        <p data-i18n="footer_copy">© 2026 Kitta — Développé par Joanatas Martins. Tous droits réservés.</p>
+    </footer>
+
+    <!-- I18N SCRIPT -->
+    <script src="translations.js"></script>
+    <script>
+        (function () {
+            function getInitialLanguage() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const langParam = urlParams.get('lang');
+                if (langParam && typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[langParam]) {
+                    return langParam;
+                }
+
+                try {
+                    const stored = localStorage.getItem('kitta_lang');
+                    if (stored && typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[stored]) {
+                        return stored;
+                    }
+                } catch (e) { }
+
+                const browserLangs = navigator.languages || [navigator.language || ''];
+                for (const bl of browserLangs) {
+                    if (!bl) continue;
+                    const normalized = bl.toLowerCase();
+                    if (normalized === 'pt-pt') return 'pt-PT';
+                    if (normalized.startsWith('pt')) return 'pt-BR';
+                    if (normalized.startsWith('en')) return 'en';
+                    if (normalized.startsWith('es')) return 'es';
+                    if (normalized.startsWith('fr')) return 'fr';
+                    if (normalized.startsWith('de')) return 'de';
+                    if (normalized.startsWith('it')) return 'it';
+                    if (normalized.startsWith('nl')) return 'nl';
+                    if (normalized.startsWith('pl')) return 'pl';
+                }
+
+                return 'pt-BR';
+            }
+
+            function applyLanguage(lang) {
+                if (typeof TRANSLATIONS === 'undefined' || !TRANSLATIONS[lang]) {
+                    lang = 'pt-BR';
+                }
+                const t = TRANSLATIONS[lang];
+                if (!t) return;
+
+                document.documentElement.lang = lang;
+
+                if (t.privacy_title) {
+                    document.title = t.privacy_title + " — Kitta";
+                }
+
+                document.querySelectorAll('[data-i18n]').forEach(function (el) {
+                    const key = el.getAttribute('data-i18n');
+                    if (t[key] !== undefined) {
+                        el.textContent = t[key];
+                    }
+                });
+
+                document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+                    const key = el.getAttribute('data-i18n-html');
+                    if (t[key] !== undefined) {
+                        el.innerHTML = t[key];
+                    }
+                });
+
+                const select = document.getElementById('lang-select');
+                if (select && select.value !== lang) {
+                    select.value = lang;
+                }
+
+                try {
+                    localStorage.setItem('kitta_lang', lang);
+                } catch (e) { }
+            }
+
+            function updateLanguageOptionLabels() {
+                const isSmallScreen = window.innerWidth <= 600;
+                const select = document.getElementById('lang-select');
+                if (!select) return;
+
+                const options = select.querySelectorAll('option');
+                options.forEach(opt => {
+                    const full = opt.getAttribute('data-full');
+                    const short = opt.getAttribute('data-short');
+                    if (isSmallScreen && short) {
+                        opt.textContent = short;
+                    } else if (full) {
+                        opt.textContent = full;
+                    }
+                });
+            }
+
+            function init() {
+                const currentLang = getInitialLanguage();
+                applyLanguage(currentLang);
+                updateLanguageOptionLabels();
+
+                const select = document.getElementById('lang-select');
+                if (select && !select.dataset.listenerBound) {
+                    select.dataset.listenerBound = 'true';
+                    select.addEventListener('change', function (e) {
+                        applyLanguage(e.target.value);
+                    });
+                }
+
+                window.addEventListener('resize', updateLanguageOptionLabels);
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
+    </script>
+</body>
+
+</html>

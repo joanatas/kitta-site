@@ -995,25 +995,26 @@
                 });
             }
 
-            document.addEventListener('DOMContentLoaded', function () {
+            function init() {
                 const currentLang = getInitialLanguage();
                 applyLanguage(currentLang);
                 updateLanguageOptionLabels();
 
                 const select = document.getElementById('lang-select');
-                if (select) {
+                if (select && !select.dataset.listenerBound) {
+                    select.dataset.listenerBound = 'true';
                     select.addEventListener('change', function (e) {
                         applyLanguage(e.target.value);
                     });
                 }
 
                 window.addEventListener('resize', updateLanguageOptionLabels);
-            });
+            }
 
-            if (document.readyState === 'interactive' || document.readyState === 'complete') {
-                const currentLang = getInitialLanguage();
-                applyLanguage(currentLang);
-                updateLanguageOptionLabels();
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
             }
         })();
     </script>
