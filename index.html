@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kitta — Controle Financeiro Pessoal & Lembretes</title>
+    <title data-i18n="meta_title">Kitta — Controle Financeiro Pessoal & Lembretes</title>
     <meta name="description"
         content="Kitta: Controle suas contas a pagar com tranquilidade. Gestão financeira pessoal simples, inteligente e 100% offline.">
 
@@ -116,6 +116,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 16px;
         }
 
         .navbar-brand {
@@ -124,6 +125,7 @@
             gap: 10px;
             text-decoration: none;
             color: var(--ant-text);
+            flex-shrink: 0;
         }
 
         .brand-logo-img {
@@ -180,7 +182,51 @@
         .navbar-cta {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        /* Seletor de Idioma Ant Design */
+        .lang-selector-container {
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            background: #ffffff;
+            border: 1px solid var(--ant-border);
+            border-radius: var(--ant-radius);
+            padding: 0 8px;
+            height: 36px;
+            transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .lang-selector-container:hover,
+        .lang-selector-container:focus-within {
+            border-color: var(--ant-primary);
+            box-shadow: 0 0 0 2px var(--ant-primary-bg);
+        }
+
+        .lang-icon {
+            font-size: 14px;
+            margin-right: 6px;
+            user-select: none;
+            line-height: 1;
+        }
+
+        .ant-select-lang {
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--ant-text);
+            outline: none;
+            cursor: pointer;
+            padding-right: 4px;
+        }
+
+        .ant-select-lang option {
+            background: #ffffff;
+            color: var(--ant-text);
         }
 
         /* ==========================================================================
@@ -599,7 +645,22 @@
             .navbar-menu,
             .navbar-btn-privacy {
                 display: none;
-                /* Simplifica menu e oculta botão secundário no mobile */
+            }
+
+            .lang-selector-container {
+                height: 32px;
+                padding: 0 6px;
+            }
+
+            .ant-select-lang {
+                font-size: 12px;
+                max-width: 110px;
+            }
+
+            .navbar-cta .ant-btn {
+                height: 32px;
+                padding: 4px 12px;
+                font-size: 13px;
             }
 
             .feature-grid {
@@ -630,18 +691,32 @@
             <a href="#" class="navbar-brand">
                 <img src="logo.png" alt="Kitta Logo" class="brand-logo-img">
                 <span class="brand-title">Kitta</span>
-                <span class="ant-tag ant-tag-blue">v1.0</span>
+                <span class="ant-tag ant-tag-blue" data-i18n="tag_version">v1.0.9</span>
             </a>
             <ul class="navbar-menu">
-                <li><a href="#sobre" class="navbar-link">Sobre</a></li>
-                <li><a href="#recursos" class="navbar-link">Recursos</a></li>
-                <li><a href="#comparativo" class="navbar-link">Kitta Pro</a></li>
-                <li><a href="#privacidade" class="navbar-link">Privacidade</a></li>
+                <li><a href="#sobre" class="navbar-link" data-i18n="nav_about">Sobre</a></li>
+                <li><a href="#recursos" class="navbar-link" data-i18n="nav_features">Recursos</a></li>
+                <li><a href="#comparativo" class="navbar-link" data-i18n="nav_pro">Kitta Pro</a></li>
+                <li><a href="#privacidade" class="navbar-link" data-i18n="nav_privacy">Privacidade</a></li>
             </ul>
             <div class="navbar-cta">
-                <a href="#privacidade" class="ant-btn ant-btn-default navbar-btn-privacy">Termos & Privacidade</a>
+                <div class="lang-selector-container">
+                    <span class="lang-icon" aria-hidden="true">🌐</span>
+                    <select id="lang-select" class="ant-select-lang" aria-label="Idioma / Language">
+                        <option value="pt-BR">Português (BR)</option>
+                        <option value="pt-PT">Português (PT)</option>
+                        <option value="en">English (US)</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                        <option value="it">Italiano</option>
+                        <option value="nl">Nederlands</option>
+                        <option value="pl">Polski</option>
+                    </select>
+                </div>
+                <a href="#privacidade" class="ant-btn ant-btn-default navbar-btn-privacy" data-i18n="nav_btn_privacy">Termos & Privacidade</a>
                 <a href="https://play.google.com/store/apps/details?id=com.joanatas.kitta" target="_blank"
-                    rel="noopener" class="ant-btn ant-btn-primary">Google Play</a>
+                    rel="noopener" class="ant-btn ant-btn-primary" data-i18n="nav_btn_play">Google Play</a>
             </div>
         </div>
     </header>
@@ -654,19 +729,19 @@
                 <img src="logo.png" alt="Kitta Logo" class="hero-logo-img">
             </div>
             <div class="hero-tags">
-                <span class="ant-tag ant-tag-blue">● 100% Offline</span>
-                <span class="ant-tag ant-tag-green">✓ Privacidade Garantida</span>
-                <span class="ant-tag ant-tag-pro">👑 Kitta Pro</span>
+                <span class="ant-tag ant-tag-blue" data-i18n="tag_offline">● 100% Offline</span>
+                <span class="ant-tag ant-tag-green" data-i18n="tag_privacy">✓ Privacidade Garantida</span>
+                <span class="ant-tag ant-tag-pro" data-i18n="tag_pro">👑 Kitta Pro</span>
             </div>
-            <h1 class="hero-title">O controle financeiro que você realmente vai usar no dia a dia.</h1>
-            <p class="hero-subtitle">
+            <h1 class="hero-title" data-i18n="hero_title">O controle financeiro que você realmente vai usar no dia a dia.</h1>
+            <p class="hero-subtitle" data-i18n-html="hero_subtitle">
                 Sem gráficos bancários densos, sem planilhas complexas e sem compartilhar seus dados com terceiros.
                 O Kitta é o assistente ideal focado no essencial: <strong>nunca mais esquecer de pagar uma
                     conta</strong>.
             </p>
             <div class="hero-actions">
-                <a href="#recursos" class="ant-btn ant-btn-primary ant-btn-lg">Conhecer Funcionalidades</a>
-                <a href="#privacidade" class="ant-btn ant-btn-default ant-btn-lg">Ler Política de Privacidade</a>
+                <a href="#recursos" class="ant-btn ant-btn-primary ant-btn-lg" data-i18n="hero_cta_features">Conhecer Funcionalidades</a>
+                <a href="#privacidade" class="ant-btn ant-btn-default ant-btn-lg" data-i18n="hero_cta_privacy">Ler Política de Privacidade</a>
             </div>
         </section>
 
@@ -674,8 +749,8 @@
         <div class="ant-alert ant-alert-info">
             <div class="ant-alert-icon">ℹ</div>
             <div class="ant-alert-content">
-                <div class="ant-alert-title">Privacidade por Princípio (Privacy by Design)</div>
-                <div>Todas as suas contas, valores e registros ficam armazenados exclusivamente no banco de dados local
+                <div class="ant-alert-title" data-i18n="alert_privacy_title">Privacidade por Princípio (Privacy by Design)</div>
+                <div data-i18n="alert_privacy_text">Todas as suas contas, valores e registros ficam armazenados exclusivamente no banco de dados local
                     (SQLite) do seu celular. Não possuímos servidores coletando suas informações financeiras.</div>
             </div>
         </div>
@@ -684,16 +759,16 @@
         <section id="sobre">
             <div class="ant-card">
                 <div class="ant-card-head">
-                    <span>Sobre o Kitta</span>
-                    <span class="ant-tag ant-tag-blue">Propósito & Filosofia</span>
+                    <span data-i18n="about_title">Sobre o Kitta</span>
+                    <span class="ant-tag ant-tag-blue" data-i18n="about_tag">Propósito & Filosofia</span>
                 </div>
                 <div class="ant-card-body">
-                    <p class="doc-p">
+                    <p class="doc-p" data-i18n-html="about_p1">
                         O <strong>Kitta</strong> nasceu para resolver uma dor real: a frustração com aplicativos
                         financeiros pesados, cheios de gráficos confusos, sincronizações bancárias que falham ou
                         planilhas difíceis de manter no celular.
                     </p>
-                    <p class="doc-p">
+                    <p class="doc-p" data-i18n-html="about_p2">
                         Nosso compromisso é com a <strong>simplicidade radical</strong> e a
                         <strong>tranquilidade</strong>. O Kitta foca no que realmente importa: organizar seus
                         vencimentos, avisar antes que o prazo expire e evitar que você jogue dinheiro fora pagando
@@ -703,23 +778,23 @@
                         style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 18px;">
                         <div
                             style="background: var(--ant-bg-spotlight); padding: 14px 16px; border-radius: var(--ant-radius); border: 1px solid var(--ant-border-secondary);">
-                            <div style="font-weight: 600; color: var(--ant-text); margin-bottom: 4px;">🎯 Simplicidade
+                            <div style="font-weight: 600; color: var(--ant-text); margin-bottom: 4px;" data-i18n="about_box1_title">🎯 Simplicidade
                                 Radical</div>
-                            <div style="font-size: 13px; color: var(--ant-text-secondary);">Cadastre uma conta em
+                            <div style="font-size: 13px; color: var(--ant-text-secondary);" data-i18n="about_box1_text">Cadastre uma conta em
                                 segundos com poucos toques, sem burocracia ou telas poluídas.</div>
                         </div>
                         <div
                             style="background: var(--ant-bg-spotlight); padding: 14px 16px; border-radius: var(--ant-radius); border: 1px solid var(--ant-border-secondary);">
-                            <div style="font-weight: 600; color: var(--ant-text); margin-bottom: 4px;">🛡️ 100% Offline
+                            <div style="font-weight: 600; color: var(--ant-text); margin-bottom: 4px;" data-i18n="about_box2_title">🛡️ 100% Offline
                                 & Seguro</div>
-                            <div style="font-size: 13px; color: var(--ant-text-secondary);">Seus dados financeiros não
+                            <div style="font-size: 13px; color: var(--ant-text-secondary);" data-i18n="about_box2_text">Seus dados financeiros não
                                 saem do seu celular para nenhum servidor em nuvem.</div>
                         </div>
                         <div
                             style="background: var(--ant-bg-spotlight); padding: 14px 16px; border-radius: var(--ant-radius); border: 1px solid var(--ant-border-secondary);">
-                            <div style="font-weight: 600; color: var(--ant-text); margin-bottom: 4px;">🔔 Lembretes
+                            <div style="font-weight: 600; color: var(--ant-text); margin-bottom: 4px;" data-i18n="about_box3_title">🔔 Lembretes
                                 Confiáveis</div>
-                            <div style="font-size: 13px; color: var(--ant-text-secondary);">Alertas locais pontuais no
+                            <div style="font-size: 13px; color: var(--ant-text-secondary);" data-i18n="about_box3_text">Alertas locais pontuais no
                                 dia ou com antecedência no horário que você preferir.</div>
                         </div>
                     </div>
@@ -730,8 +805,8 @@
         <!-- GRID DE RECURSOS -->
         <section id="recursos">
             <div class="section-header">
-                <h2 class="section-title">Construído para simplificar suas finanças</h2>
-                <p class="section-subtitle">Funcionalidades práticas desenhadas com foco absoluto na experiência do
+                <h2 class="section-title" data-i18n="features_title">Construído para simplificar suas finanças</h2>
+                <p class="section-subtitle" data-i18n="features_subtitle">Funcionalidades práticas desenhadas com foco absoluto na experiência do
                     usuário.</p>
             </div>
 
@@ -739,49 +814,49 @@
                 <!-- Card 1 -->
                 <div class="feature-card">
                     <div class="feature-icon-wrapper">📅</div>
-                    <div class="feature-title">Contas & Vencimentos</div>
-                    <div class="feature-desc">Cadastre despesas fixas, variáveis ou parceladas com facilidade. Acompanhe
+                    <div class="feature-title" data-i18n="f1_title">Contas & Vencimentos</div>
+                    <div class="feature-desc" data-i18n="f1_desc">Cadastre despesas fixas, variáveis ou parceladas com facilidade. Acompanhe
                         o que está pendente, pago ou em atraso.</div>
                 </div>
 
                 <!-- Card 2 -->
                 <div class="feature-card">
                     <div class="feature-icon-wrapper">🔔</div>
-                    <div class="feature-title">Lembretes Inteligentes</div>
-                    <div class="feature-desc">Notificações locais pontuais no dia do vencimento ou com antecedência no
-                        horário que você escolher, evitando multas e juros.</div>
+                    <div class="feature-title" data-i18n="f2_title">Lembretes Inteligentes</div>
+                    <div class="feature-desc" data-i18n="f2_desc">Notificações locais pontuais no dia do vencimento ou com antecedência no
+                        horário exato escolhido, evitando multas e juros.</div>
                 </div>
 
                 <!-- Card 3 -->
                 <div class="feature-card">
-                    <div class="feature-icon-wrapper">👑</div>
-                    <div class="feature-title">Saldo Inteligente (Pro)</div>
-                    <div class="feature-desc">Módulo de recebimentos com cálculo automático da sobra real do mês
-                        anterior aplicada ao mês atual e cobertura de despesas.</div>
+                    <div class="feature-icon-wrapper">🔁</div>
+                    <div class="feature-title" data-i18n="f3_title">Recorrência Flexível</div>
+                    <div class="feature-desc" data-i18n="f3_desc">Programe repetições semanais, mensais ou anuais com projeção automática das
+                        contas e recebimentos no calendário.</div>
                 </div>
 
                 <!-- Card 4 -->
                 <div class="feature-card">
-                    <div class="feature-icon-wrapper">📊</div>
-                    <div class="feature-title">Relatórios Objetivos</div>
-                    <div class="feature-desc">Distribuição clara de gastos por categoria para você entender visualmente
-                        para onde está indo o seu dinheiro.</div>
+                    <div class="feature-icon-wrapper">👑</div>
+                    <div class="feature-title" data-i18n="f4_title">Saldo Inteligente (Pro)</div>
+                    <div class="feature-desc" data-i18n="f4_desc">Módulo de recebimentos com cálculo automático da sobra real do mês
+                        anterior aplicada ao mês atual e cobertura de despesas.</div>
                 </div>
 
                 <!-- Card 5 -->
                 <div class="feature-card">
-                    <div class="feature-icon-wrapper">🔒</div>
-                    <div class="feature-title">Backups Criptografados</div>
-                    <div class="feature-desc">Exporte seus dados protegidos com criptografia AES-256 e restaure quando
-                        trocar de aparelho celular sem complicações.</div>
+                    <div class="feature-icon-wrapper">🎨</div>
+                    <div class="feature-title" data-i18n="f5_title">Cores de Destaque (Pro)</div>
+                    <div class="feature-desc" data-i18n="f5_desc">Personalize o visual do aplicativo escolhendo cores de acentuação exclusivas
+                        que combinam com seu estilo pessoal.</div>
                 </div>
 
                 <!-- Card 6 -->
                 <div class="feature-card">
-                    <div class="feature-icon-wrapper">⚡</div>
-                    <div class="feature-title">Ultra Rápido & Fluido</div>
-                    <div class="feature-desc">Desenvolvido em React Native nativo com SQLite via JSI de altíssima
-                        performance. Sem telas de carregamento lentas.</div>
+                    <div class="feature-icon-wrapper">🔒</div>
+                    <div class="feature-title" data-i18n="f6_title">Backups Criptografados</div>
+                    <div class="feature-desc" data-i18n="f6_desc">Exporte seus dados protegidos com criptografia AES-256 e restaure quando
+                        trocar de aparelho celular sem complicações.</div>
                 </div>
             </div>
         </section>
@@ -789,54 +864,64 @@
         <!-- TABELA COMPARATIVA FREEMIUM VS PRO -->
         <section id="comparativo">
             <div class="section-header">
-                <h2 class="section-title">Escolha a experiência ideal para você</h2>
-                <p class="section-subtitle">Transparência total entre os recursos gratuitos e a versão Kitta Pro.</p>
+                <h2 class="section-title" data-i18n="comp_title">Escolha a experiência ideal para você</h2>
+                <p class="section-subtitle" data-i18n="comp_subtitle">Transparência total entre os recursos gratuitos e a versão Kitta Pro.</p>
             </div>
 
             <div class="ant-table-wrapper">
                 <table class="ant-table">
                     <thead>
                         <tr>
-                            <th style="width: 50%;">Funcionalidade</th>
-                            <th style="width: 25%;">Kitta Gratuito</th>
-                            <th style="width: 25%;"><span class="ant-tag ant-tag-pro">👑 Kitta Pro</span></th>
+                            <th style="width: 50%;" data-i18n="comp_col_feature">Funcionalidade</th>
+                            <th style="width: 25%;" data-i18n="comp_col_free">Kitta Gratuito</th>
+                            <th style="width: 25%;"><span class="ant-tag ant-tag-pro" data-i18n="comp_col_pro">👑 Kitta Pro</span></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="text-strong">Gestão de Contas a Pagar</td>
-                            <td><span class="ant-tag ant-tag-green">✓ Ilimitado</span></td>
-                            <td><span class="ant-tag ant-tag-green">✓ Ilimitado</span></td>
+                            <td class="text-strong" data-i18n="comp_r1_title">Gestão de Contas a Pagar</td>
+                            <td><span class="ant-tag ant-tag-green" data-i18n="comp_r1_free">✓ Ilimitado</span></td>
+                            <td><span class="ant-tag ant-tag-green" data-i18n="comp_r1_pro">✓ Ilimitado</span></td>
                         </tr>
                         <tr>
-                            <td class="text-strong">Lembretes & Notificações de Vencimento</td>
-                            <td><span class="ant-tag ant-tag-green">✓ Sim</span></td>
-                            <td><span class="ant-tag ant-tag-green">✓ Sim</span></td>
+                            <td class="text-strong" data-i18n="comp_r2_title">Lembretes & Notificações de Vencimento</td>
+                            <td><span class="ant-tag ant-tag-green" data-i18n="comp_r2_free">✓ Sim</span></td>
+                            <td><span class="ant-tag ant-tag-green" data-i18n="comp_r2_pro">✓ Sim</span></td>
                         </tr>
                         <tr>
-                            <td class="text-strong">Histórico Mensal & Relatórios Básicos</td>
-                            <td><span class="ant-tag ant-tag-green">✓ Sim</span></td>
-                            <td><span class="ant-tag ant-tag-green">✓ Sim</span></td>
+                            <td class="text-strong" data-i18n="comp_r3_title">Recorrência Semanal, Mensal e Anual</td>
+                            <td><span class="ant-tag ant-tag-green" data-i18n="comp_r3_free">✓ Sim</span></td>
+                            <td><span class="ant-tag ant-tag-green" data-i18n="comp_r3_pro">✓ Sim</span></td>
                         </tr>
                         <tr>
-                            <td class="text-strong">Backups Criptografados (AES-256)</td>
-                            <td><span class="ant-tag ant-tag-green">✓ Sim</span></td>
-                            <td><span class="ant-tag ant-tag-green">✓ Sim</span></td>
+                            <td class="text-strong" data-i18n="comp_r4_title">Histórico Mensal & Relatórios Básicos</td>
+                            <td><span class="ant-tag ant-tag-green" data-i18n="comp_r4_free">✓ Sim</span></td>
+                            <td><span class="ant-tag ant-tag-green" data-i18n="comp_r4_pro">✓ Sim</span></td>
                         </tr>
                         <tr>
-                            <td class="text-strong">Módulo de Recebimentos (Entradas / Salário)</td>
-                            <td><span style="color: var(--ant-text-quaternary);">—</span></td>
-                            <td><span class="ant-tag ant-tag-pro">✓ Completo</span></td>
+                            <td class="text-strong" data-i18n="comp_r5_title">Backups Criptografados (AES-256)</td>
+                            <td><span class="ant-tag ant-tag-green" data-i18n="comp_r5_free">✓ Sim</span></td>
+                            <td><span class="ant-tag ant-tag-green" data-i18n="comp_r5_pro">✓ Sim</span></td>
                         </tr>
                         <tr>
-                            <td class="text-strong">Saldo Inteligente (Sobra anterior & Aporte)</td>
-                            <td><span style="color: var(--ant-text-quaternary);">—</span></td>
-                            <td><span class="ant-tag ant-tag-pro">✓ Automático</span></td>
+                            <td class="text-strong" data-i18n="comp_r6_title">Módulo de Recebimentos (Entradas / Salário)</td>
+                            <td><span style="color: var(--ant-text-quaternary);" data-i18n="comp_r6_free">—</span></td>
+                            <td><span class="ant-tag ant-tag-pro" data-i18n="comp_r6_pro">✓ Completo</span></td>
                         </tr>
                         <tr>
-                            <td class="text-strong">Experiência sem Anúncios</td>
-                            <td>Contém banners AdMob</td>
-                            <td><span class="ant-tag ant-tag-green">100% Livre de Anúncios</span></td>
+                            <td class="text-strong" data-i18n="comp_r7_title">Saldo Inteligente (Sobra anterior & Aporte)</td>
+                            <td><span style="color: var(--ant-text-quaternary);" data-i18n="comp_r7_free">—</span></td>
+                            <td><span class="ant-tag ant-tag-pro" data-i18n="comp_r7_pro">✓ Automático</span></td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong" data-i18n="comp_r8_title">Cores de Acentuação Personalizadas</td>
+                            <td><span style="color: var(--ant-text-quaternary);" data-i18n="comp_r8_free">—</span></td>
+                            <td><span class="ant-tag ant-tag-pro" data-i18n="comp_r8_pro">✓ Múltiplas Cores</span></td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong" data-i18n="comp_r9_title">Experiência sem Anúncios</td>
+                            <td data-i18n="comp_r9_free">Contém banners AdMob</td>
+                            <td><span class="ant-tag ant-tag-green" data-i18n="comp_r9_pro">100% Livre de Anúncios</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -847,110 +932,110 @@
         <section id="privacidade">
             <div class="ant-card">
                 <div class="ant-card-head">
-                    <span>Política de Privacidade</span>
-                    <span class="ant-tag ant-tag-blue">Atualizado em 07/11/2026</span>
+                    <span data-i18n="privacy_title">Política de Privacidade</span>
+                    <span class="ant-tag ant-tag-blue" data-i18n="privacy_updated">Atualizado em 15/11/2026</span>
                 </div>
                 <div class="ant-card-body">
-                    <p class="doc-p">
+                    <p class="doc-p" data-i18n-html="privacy_intro">
                         Esta Política de Privacidade descreve como o aplicativo <strong>Kitta</strong> ("nós", "nosso"
                         ou "aplicativo"), mantido pelo desenvolvedor independente <strong>Joanatas Martins</strong>,
                         protege e trata os dados dos usuários em total conformidade com a LGPD (Lei Geral de Proteção de
-                        Dados) e com as diretrizes do Google Play.
+                        Dados), GDPR e com as diretrizes do Google Play.
                     </p>
 
-                    <h3 class="doc-h3">1. Armazenamento Local e Soberania dos Dados</h3>
-                    <p class="doc-p">
+                    <h3 class="doc-h3" data-i18n="privacy_s1_title">1. Armazenamento Local e Soberania dos Dados</h3>
+                    <p class="doc-p" data-i18n-html="privacy_s1_p1">
                         O Kitta adota a arquitetura de <strong>Armazenamento 100% Local</strong>. Todos os registros que
                         você adiciona — incluindo nomes de contas, credores, valores monetários, datas de vencimento,
                         notas, categorias e recebimentos — são gravados exclusivamente no banco de dados SQLite local no
                         armazenamento seguro do seu celular.
                     </p>
-                    <p class="doc-p">
+                    <p class="doc-p" data-i18n-html="privacy_s1_p2">
                         Não mantemos servidores proprietários de sincronização em nuvem e não temos acesso, posse ou
                         visibilidade de nenhuma de suas informações financeiras.
                     </p>
 
-                    <h3 class="doc-h3">2. Serviços Conectados & Provedores de Tecnologia</h3>
-                    <p class="doc-p">
+                    <h3 class="doc-h3" data-i18n="privacy_s2_title">2. Serviços Conectados & Provedores de Tecnologia</h3>
+                    <p class="doc-p" data-i18n="privacy_s2_p1">
                         Para viabilizar a distribuição e a monetização do aplicativo, integramos bibliotecas de
                         parceiros confiáveis:
                     </p>
                     <ul class="doc-ul">
-                        <li>
+                        <li data-i18n-html="privacy_s2_admob">
                             <strong>Google AdMob (Versão Gratuita):</strong> Exibe pequenos anúncios institucionais na
                             versão gratuita. O SDK do Google AdMob pode coletar identificadores anônimos de dispositivo
                             (Google Advertising ID) e telemetria básica para prevenção de fraudes e exibição adequada de
                             publicidade. Consulte a <a href="https://policies.google.com/technologies/ads"
                                 target="_blank" rel="noopener" class="text-link">Política de Publicidade do Google</a>.
                         </li>
-                        <li>
+                        <li data-i18n-html="privacy_s2_billing">
                             <strong>Google Play Billing & RevenueCat (Kitta Pro):</strong> O processamento e cobrança de
                             assinaturas são efetuados exclusivamente pelo Google Play. O RevenueCat apenas valida a
                             autenticidade do comprovante da loja. Nós nunca temos acesso aos dados do seu cartão de
                             crédito ou conta bancária.
                         </li>
                     </ul>
-                    <p class="doc-p">
+                    <p class="doc-p" data-i18n-html="privacy_s2_note">
                         <em>Ao assinar o <strong>Kitta Pro</strong>, todas as chamadas de exibição de anúncios são
                             imediatamente desligadas.</em>
                     </p>
 
-                    <h3 class="doc-h3">3. Permissões Solicitadas no Android</h3>
+                    <h3 class="doc-h3" data-i18n="privacy_s3_title">3. Permissões Solicitadas no Android</h3>
                     <div class="ant-table-wrapper" style="margin: 14px 0 20px;">
                         <table class="ant-table">
                             <thead>
                                 <tr>
-                                    <th style="width: 35%;">Permissão</th>
-                                    <th>Finalidade no Aplicativo</th>
+                                    <th style="width: 35%;" data-i18n="privacy_s3_th_perm">Permissão</th>
+                                    <th data-i18n="privacy_s3_th_purpose">Finalidade no Aplicativo</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td><code>POST_NOTIFICATIONS</code></td>
-                                    <td>Exibir notificações locais na barra de avisos do celular para alertar sobre
+                                    <td data-i18n="privacy_s3_post">Exibir notificações locais na barra de avisos do celular para alertar sobre
                                         contas a vencer ou vencidas.</td>
                                 </tr>
                                 <tr>
                                     <td><code>SCHEDULE_EXACT_ALARM</code></td>
-                                    <td>Agendar os lembretes de vencimento no horário exato configurado pelo usuário,
+                                    <td data-i18n="privacy_s3_alarm">Agendar os lembretes de vencimento no horário exato configurado pelo usuário,
                                         garantindo a pontualidade do alerta mesmo em modo de economia de energia.</td>
                                 </tr>
                                 <tr>
                                     <td><code>RECEIVE_BOOT_COMPLETED</code></td>
-                                    <td>Reativar o agendamento dos lembretes locais caso você reinicie ou desligue o
+                                    <td data-i18n="privacy_s3_boot">Reativar o agendamento dos lembretes locais caso você reinicie ou desligue o
                                         aparelho.</td>
                                 </tr>
                                 <tr>
                                     <td><code>INTERNET</code></td>
-                                    <td>Necessária para carregar os banners do AdMob (no modo gratuito) e validar o
+                                    <td data-i18n="privacy_s3_internet">Necessária para carregar os banners do AdMob (no modo gratuito) e validar o
                                         recibo de compra do Kitta Pro junto à Google Play.</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <h3 class="doc-h3">4. Exclusão Permanente de Informações</h3>
-                    <p class="doc-p">
+                    <h3 class="doc-h3" data-i18n="privacy_s4_title">4. Exclusão Permanente de Informações</h3>
+                    <p class="doc-p" data-i18n="privacy_s4_p1">
                         Como seus dados não residem em servidores em nuvem, você detém o controle total:
                     </p>
                     <ul class="doc-ul">
-                        <li>Você pode apagar qualquer conta ou recebimento a qualquer momento dentro do app.</li>
-                        <li>Para apagar todos os dados definitivamente, basta desinstalar o Kitta do aparelho ou
+                        <li data-i18n="privacy_s4_li1">Você pode apagar qualquer conta ou recebimento a qualquer momento dentro do app.</li>
+                        <li data-i18n="privacy_s4_li2">Para apagar todos os dados definitivamente, basta desinstalar o Kitta do aparelho ou
                             selecionar a opção "Limpar Armazenamento" nas configurações do Android.</li>
                     </ul>
 
-                    <h3 class="doc-h3">5. Contato com o Desenvolvedor</h3>
-                    <p class="doc-p">
+                    <h3 class="doc-h3" data-i18n="privacy_s5_title">5. Contato com o Desenvolvedor</h3>
+                    <p class="doc-p" data-i18n="privacy_s5_p1">
                         Para suporte, dúvidas relativas a esta política ou sugestões de melhorias, entre em contato
                         diretamente pelo e-mail:
                     </p>
                     <div class="ant-alert ant-alert-info" style="margin-top: 10px; margin-bottom: 0;">
                         <div class="ant-alert-icon">✉</div>
                         <div class="ant-alert-content">
-                            <strong>Desenvolvedor:</strong> Joanatas Rodrigues Martins<br>
-                            <strong>E-mail:</strong> <a href="mailto:joanatas.dev@gmail.com"
+                            <strong data-i18n="privacy_s5_dev_label">Desenvolvedor:</strong> <span data-i18n="privacy_s5_dev">Joanatas Rodrigues Martins</span><br>
+                            <strong data-i18n="privacy_s5_email_label">E-mail:</strong> <a href="mailto:joanatas.dev@gmail.com"
                                 class="text-link">joanatas.dev@gmail.com</a><br>
-                            <strong>Localidade:</strong> Brasil
+                            <strong data-i18n="privacy_s5_location_label">Localidade:</strong> <span data-i18n="privacy_s5_location">Brasil</span>
                         </div>
                     </div>
                 </div>
@@ -962,16 +1047,114 @@
     <!-- FOOTER ANT DESIGN -->
     <footer class="ant-footer">
         <div class="footer-links">
-            <a href="#sobre">Sobre o Kitta</a>
-            <a href="#recursos">Recursos</a>
-            <a href="#comparativo">Kitta Pro</a>
-            <a href="#privacidade">Política de Privacidade</a>
+            <a href="#sobre" data-i18n="footer_about">Sobre o Kitta</a>
+            <a href="#recursos" data-i18n="footer_features">Recursos</a>
+            <a href="#comparativo" data-i18n="footer_pro">Kitta Pro</a>
+            <a href="#privacidade" data-i18n="footer_privacy">Política de Privacidade</a>
             <a href="/app-ads.txt" target="_blank">app-ads.txt</a>
-            <a href="mailto:joanatas.dev@gmail.com">Contato</a>
+            <a href="mailto:joanatas.dev@gmail.com" data-i18n="footer_contact">Contato</a>
         </div>
-        <p>&copy; 2026 Kitta — Desenvolvido por Joanatas Martins. Todos os direitos reservados.</p>
+        <p data-i18n="footer_copy">&copy; 2026 Kitta — Desenvolvido por Joanatas Martins. Todos os direitos reservados.</p>
     </footer>
 
+    <!-- I18N SCRIPT -->
+    <script src="translations.js"></script>
+    <script>
+        (function () {
+            function getInitialLanguage() {
+                // 1. URL Query parameter ?lang=...
+                const urlParams = new URLSearchParams(window.location.search);
+                const langParam = urlParams.get('lang');
+                if (langParam && typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[langParam]) {
+                    return langParam;
+                }
+
+                // 2. localStorage
+                try {
+                    const stored = localStorage.getItem('kitta_lang');
+                    if (stored && typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[stored]) {
+                        return stored;
+                    }
+                } catch (e) { }
+
+                // 3. Browser language
+                const browserLangs = navigator.languages || [navigator.language || ''];
+                for (const bl of browserLangs) {
+                    if (!bl) continue;
+                    const normalized = bl.toLowerCase();
+                    if (normalized === 'pt-pt') return 'pt-PT';
+                    if (normalized.startsWith('pt')) return 'pt-BR';
+                    if (normalized.startsWith('en')) return 'en';
+                    if (normalized.startsWith('es')) return 'es';
+                    if (normalized.startsWith('fr')) return 'fr';
+                    if (normalized.startsWith('de')) return 'de';
+                    if (normalized.startsWith('it')) return 'it';
+                    if (normalized.startsWith('nl')) return 'nl';
+                    if (normalized.startsWith('pl')) return 'pl';
+                }
+
+                return 'pt-BR';
+            }
+
+            function applyLanguage(lang) {
+                if (typeof TRANSLATIONS === 'undefined' || !TRANSLATIONS[lang]) {
+                    lang = 'pt-BR';
+                }
+                const t = TRANSLATIONS[lang];
+                if (!t) return;
+
+                document.documentElement.lang = lang;
+
+                if (t.meta_title) document.title = t.meta_title;
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc && t.meta_desc) {
+                    metaDesc.setAttribute('content', t.meta_desc);
+                }
+
+                document.querySelectorAll('[data-i18n]').forEach(function (el) {
+                    const key = el.getAttribute('data-i18n');
+                    if (t[key] !== undefined) {
+                        el.textContent = t[key];
+                    }
+                });
+
+                document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+                    const key = el.getAttribute('data-i18n-html');
+                    if (t[key] !== undefined) {
+                        el.innerHTML = t[key];
+                    }
+                });
+
+                const select = document.getElementById('lang-select');
+                if (select && select.value !== lang) {
+                    select.value = lang;
+                }
+
+                try {
+                    localStorage.setItem('kitta_lang', lang);
+                } catch (e) { }
+            }
+
+            // Init on DOM ready
+            document.addEventListener('DOMContentLoaded', function () {
+                const currentLang = getInitialLanguage();
+                applyLanguage(currentLang);
+
+                const select = document.getElementById('lang-select');
+                if (select) {
+                    select.addEventListener('change', function (e) {
+                        applyLanguage(e.target.value);
+                    });
+                }
+            });
+
+            // Fallback immediate execution
+            if (document.readyState === 'interactive' || document.readyState === 'complete') {
+                const currentLang = getInitialLanguage();
+                applyLanguage(currentLang);
+            }
+        })();
+    </script>
 </body>
 
 </html>
