@@ -654,7 +654,7 @@
 
             .ant-select-lang {
                 font-size: 12px;
-                max-width: 110px;
+                max-width: 130px;
             }
 
             .navbar-cta .ant-btn {
@@ -680,6 +680,43 @@
                 padding: 16px;
             }
         }
+
+        @media (max-width: 600px) {
+            .navbar-container {
+                padding: 0 12px;
+            }
+
+            .brand-title {
+                font-size: 18px;
+            }
+
+            .navbar-cta {
+                gap: 8px;
+            }
+
+            .lang-selector-container {
+                height: 30px;
+                padding: 0 4px;
+            }
+
+            .lang-icon {
+                font-size: 13px;
+                margin-right: 3px;
+            }
+
+            .ant-select-lang {
+                font-size: 11px;
+                font-weight: 600;
+                max-width: none;
+                padding-right: 0;
+            }
+
+            .navbar-cta .ant-btn {
+                height: 30px;
+                padding: 3px 10px;
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 
@@ -691,7 +728,6 @@
             <a href="#" class="navbar-brand">
                 <img src="logo.png" alt="Kitta Logo" class="brand-logo-img">
                 <span class="brand-title">Kitta</span>
-                <span class="ant-tag ant-tag-blue" data-i18n="tag_version">v1.0.9</span>
             </a>
             <ul class="navbar-menu">
                 <li><a href="#sobre" class="navbar-link" data-i18n="nav_about">Sobre</a></li>
@@ -703,15 +739,15 @@
                 <div class="lang-selector-container">
                     <span class="lang-icon" aria-hidden="true">🌐</span>
                     <select id="lang-select" class="ant-select-lang" aria-label="Idioma / Language">
-                        <option value="pt-BR">Português (BR)</option>
-                        <option value="pt-PT">Português (PT)</option>
-                        <option value="en">English (US)</option>
-                        <option value="es">Español</option>
-                        <option value="fr">Français</option>
-                        <option value="de">Deutsch</option>
-                        <option value="it">Italiano</option>
-                        <option value="nl">Nederlands</option>
-                        <option value="pl">Polski</option>
+                        <option value="pt-BR" data-full="Português (BR)" data-short="PT-BR">Português (BR)</option>
+                        <option value="pt-PT" data-full="Português (PT)" data-short="PT-PT">Português (PT)</option>
+                        <option value="en" data-full="English (US)" data-short="EN">English (US)</option>
+                        <option value="es" data-full="Español" data-short="ES">Español</option>
+                        <option value="fr" data-full="Français" data-short="FR">Français</option>
+                        <option value="de" data-full="Deutsch" data-short="DE">Deutsch</option>
+                        <option value="it" data-full="Italiano" data-short="IT">Italiano</option>
+                        <option value="nl" data-full="Nederlands" data-short="NL">Nederlands</option>
+                        <option value="pl" data-full="Polski" data-short="PL">Polski</option>
                     </select>
                 </div>
                 <a href="#privacidade" class="ant-btn ant-btn-default navbar-btn-privacy"
@@ -1169,10 +1205,27 @@
                 } catch (e) { }
             }
 
+            function updateLanguageOptionLabels() {
+                const isSmallScreen = window.innerWidth <= 600;
+                const select = document.getElementById('lang-select');
+                if (!select) return;
+                const options = select.querySelectorAll('option');
+                options.forEach(function (opt) {
+                    const full = opt.getAttribute('data-full');
+                    const short = opt.getAttribute('data-short');
+                    if (isSmallScreen && short) {
+                        opt.textContent = short;
+                    } else if (full) {
+                        opt.textContent = full;
+                    }
+                });
+            }
+
             // Init on DOM ready
             document.addEventListener('DOMContentLoaded', function () {
                 const currentLang = getInitialLanguage();
                 applyLanguage(currentLang);
+                updateLanguageOptionLabels();
 
                 const select = document.getElementById('lang-select');
                 if (select) {
@@ -1180,12 +1233,15 @@
                         applyLanguage(e.target.value);
                     });
                 }
+
+                window.addEventListener('resize', updateLanguageOptionLabels);
             });
 
             // Fallback immediate execution
             if (document.readyState === 'interactive' || document.readyState === 'complete') {
                 const currentLang = getInitialLanguage();
                 applyLanguage(currentLang);
+                updateLanguageOptionLabels();
             }
         })();
     </script>
