@@ -137,20 +137,6 @@
             border: 1px solid var(--ant-border-secondary);
         }
 
-        .hero-logo-wrapper {
-            margin-bottom: 20px;
-        }
-
-        .hero-logo-img {
-            width: 80px;
-            height: 80px;
-            border-radius: 18px;
-            object-fit: cover;
-            box-shadow: 0 8px 24px -4px rgba(22, 119, 255, 0.2);
-            border: 1px solid var(--ant-border-secondary);
-            background: #ffffff;
-        }
-
         .brand-title {
             font-size: 18px;
             font-weight: 700;
@@ -346,49 +332,6 @@
         }
 
         /* ==========================================================================
-           HERO SECTION
-           ========================================================================== */
-        .hero {
-            text-align: center;
-            padding: 48px 0 64px;
-            max-width: 780px;
-            margin: 0 auto;
-        }
-
-        .hero-tags {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .hero-title {
-            font-size: 40px;
-            font-weight: 700;
-            line-height: 1.25;
-            color: var(--ant-text);
-            letter-spacing: -0.03em;
-            margin-bottom: 16px;
-        }
-
-        .hero-subtitle {
-            font-size: 16px;
-            line-height: 1.65;
-            color: var(--ant-text-secondary);
-            margin-bottom: 32px;
-        }
-
-        .hero-actions {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        /* ==========================================================================
            ALERT COMPONENT (Ant Design Alert)
            ========================================================================== */
         .ant-alert {
@@ -460,58 +403,6 @@
         }
 
         /* ==========================================================================
-           FEATURE GRID
-           ========================================================================== */
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-            margin-bottom: 48px;
-        }
-
-        .feature-card {
-            background: var(--ant-bg-container);
-            border: 1px solid var(--ant-border-secondary);
-            border-radius: var(--ant-radius-lg);
-            padding: 22px;
-            box-shadow: var(--ant-shadow-sm);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            transition: all 0.25s ease;
-        }
-
-        .feature-card:hover {
-            border-color: var(--ant-primary-border);
-            transform: translateY(-2px);
-            box-shadow: var(--ant-shadow-card);
-        }
-
-        .feature-icon-wrapper {
-            width: 40px;
-            height: 40px;
-            border-radius: var(--ant-radius);
-            background: var(--ant-primary-bg);
-            color: var(--ant-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-
-        .feature-title {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--ant-text);
-        }
-
-        .feature-desc {
-            font-size: 13.5px;
-            color: var(--ant-text-secondary);
-            line-height: 1.55;
-        }
-
-        /* ==========================================================================
            TABLE COMPONENT (Ant Design Table)
            ========================================================================== */
         .ant-table-wrapper {
@@ -554,26 +445,6 @@
         .text-strong {
             color: var(--ant-text);
             font-weight: 600;
-        }
-
-        /* ==========================================================================
-           TYPOGRAPHY SECTIONS
-           ========================================================================== */
-        .section-header {
-            margin-bottom: 24px;
-        }
-
-        .section-title {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--ant-text);
-            letter-spacing: -0.01em;
-            margin-bottom: 6px;
-        }
-
-        .section-subtitle {
-            font-size: 14px;
-            color: var(--ant-text-tertiary);
         }
 
         .doc-h3 {
@@ -680,14 +551,6 @@
                 font-size: 13px;
             }
 
-            .feature-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-title {
-                font-size: 28px;
-            }
-
             .main-wrapper {
                 padding: 24px 16px 60px;
             }
@@ -752,7 +615,8 @@
                 <li><a href="index.html#sobre" class="navbar-link" data-i18n="nav_about">À propos</a></li>
                 <li><a href="index.html#recursos" class="navbar-link" data-i18n="nav_features">Fonctionnalités</a></li>
                 <li><a href="index.html#comparativo" class="navbar-link" data-i18n="nav_pro">Kitta Pro</a></li>
-                <li><a href="privacy.html" class="navbar-link" style="color: var(--ant-primary); font-weight: 600;" data-i18n="nav_privacy">Confidentialité</a></li>
+                <li><a href="privacy.html" class="navbar-link" style="color: var(--ant-primary); font-weight: 600;"
+                        data-i18n="nav_privacy">Confidentialité</a></li>
             </ul>
             <div class="navbar-cta">
                 <div class="lang-selector-container">
@@ -782,7 +646,8 @@
     <!-- CONTEÚDO PRINCIPAL -->
     <div class="main-wrapper">
         <div style="margin-bottom: 24px;">
-            <a href="index.html" class="ant-btn ant-btn-default" style="display: inline-flex; align-items: center; gap: 6px;">
+            <a href="index.html" class="ant-btn ant-btn-default"
+                style="display: inline-flex; align-items: center; gap: 6px;">
                 <span data-i18n="back_home">← Retour à l'accueil</span>
             </a>
         </div>
