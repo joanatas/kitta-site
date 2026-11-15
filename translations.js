@@ -1,4 +1,4 @@
-// translations.js - Internationalization dictionary for Kitta Site
+// translations.js - dicionario de internacionalizacao para kitta site
 const TRANSLATIONS = {
     "pt-BR": {
         "meta_title": "Kitta — O Checklist de Contas a Pagar com Lembretes",
@@ -1112,5 +1112,5 @@ const TRANSLATIONS = {
     }
 };
 
-// Alias en to en-US for backwards compatibility
+// alias en para en-us por retrocompatibilidade
 TRANSLATIONS["en"] = TRANSLATIONS["en-US"];
