@@ -21,6 +21,7 @@
             if (normalized.startsWith('pt')) return 'pt-BR';
             if (normalized === 'en-gb') return 'en-GB';
             if (normalized.startsWith('en')) return 'en-US';
+            if (normalized === 'es-es') return 'es-ES';
             if (normalized.startsWith('es')) return 'es';
             if (normalized.startsWith('fr')) return 'fr';
             if (normalized.startsWith('de')) return 'de';
@@ -77,6 +78,7 @@
         'en-US': 'EN-US',
         'en-GB': 'EN-UK',
         'en': 'EN-US',
+        'es-ES': 'ES-ES',
         'es': 'ES',
         'fr': 'FR',
         'de': 'DE',
@@ -91,7 +93,8 @@
         'en-US': 'English (US)',
         'en-GB': 'English (UK)',
         'en': 'English (US)',
-        'es': 'Español',
+        'es': 'Español (LA)',
+        'es-ES': 'Español (ES)',
         'fr': 'Français',
         'de': 'Deutsch',
         'it': 'Italiano',

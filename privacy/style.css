@@ -24,10 +24,11 @@
     --ant-border-secondary: #f0f0f0;
 
     /* geometria de cantos */
-    --ant-radius-xs: 2px;
-    --ant-radius-sm: 4px;
-    --ant-radius: 6px;
-    --ant-radius-lg: 8px;
+    --ant-radius-xs: 4px;
+    --ant-radius-sm: 8px;
+    --ant-radius: 12px;
+    --ant-radius-lg: 16px;
+    --ant-radius-card: 18px;
 
     /* sombras ant design */
     --ant-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
@@ -350,7 +351,7 @@ body {
 .ant-card {
     background: var(--ant-bg-container);
     border: 1px solid var(--ant-border-secondary);
-    border-radius: var(--ant-radius-lg);
+    border-radius: var(--ant-radius-card);
     box-shadow: var(--ant-shadow-sm);
     margin-bottom: 32px;
     overflow: hidden;
